@@ -1,7 +1,53 @@
 // ═══ NAVIGATION ═══
 let prevTab = 'group';
 
+// History
+const navHistory = ['group'];
+let navIndex = 0;
+
+function _updateHistBtns() {
+  const b = document.getElementById('btn-back');
+  const f = document.getElementById('btn-fwd');
+  if (b) b.disabled = navIndex <= 0;
+  if (f) f.disabled = navIndex >= navHistory.length - 1;
+}
+
+function histBack() {
+  if (navIndex <= 0) return;
+  navIndex--;
+  _swNoHistory(navHistory[navIndex]);
+  _updateHistBtns();
+}
+
+function histForward() {
+  if (navIndex >= navHistory.length - 1) return;
+  navIndex++;
+  _swNoHistory(navHistory[navIndex]);
+  _updateHistBtns();
+}
+
+// Internal: navigate without pushing to history
+function _swNoHistory(tab) {
+  document.querySelectorAll('.tb-tab, .sb-item').forEach(b => b.classList.remove('on'));
+  const btn = document.querySelector(`.tb-tab[data-tab="${tab}"]`) || document.querySelector(`.sb-item[data-tab="${tab}"]`);
+  if (btn) btn.classList.add('on');
+  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.classList.add('hidden');
+  });
+  const map = { group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab', 'dept-sales':'vdept-sales', 'dept-marketing':'vdept-marketing', 'dept-hr':'vdept-hr', 'dept-tech':'vdept-tech', 'dept-production':'vdept-production' };
+  const viewId = map[tab]; if (viewId) document.getElementById(viewId).classList.remove('hidden');
+  if (tab === 'doctors' && !currentDoctor) { buildDocList(); selectDoctor('karaseva'); }
+}
+
 function sw(tab, btn) {
+  // Push to history (truncate forward stack)
+  if (navHistory[navIndex] !== tab) {
+    navHistory.splice(navIndex + 1);
+    navHistory.push(tab);
+    navIndex = navHistory.length - 1;
+  }
+  _updateHistBtns();
+
   // Clear top tabs and sidebar items
   document.querySelectorAll('.tb-tab, .sb-item').forEach(b => b.classList.remove('on'));
   if (btn) btn.classList.add('on');

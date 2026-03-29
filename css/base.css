@@ -55,6 +55,17 @@ body {
 }
 .lm-badge img { display: block; height: 22px; width: auto; }
 
+.tb-nav-btns { display: flex; gap: 2px; margin-right: 6px; }
+.tb-nav-btn {
+  width: 28px; height: 28px; border-radius: 6px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #37352F; transition: background .15s, color .15s;
+}
+.tb-nav-btn svg { width: 16px; height: 16px; }
+.tb-nav-btn:hover:not(:disabled) { background: #F0EFEB; }
+.tb-nav-btn:disabled { color: #D0CEC9; cursor: default; }
+
 .tb-tabs {
   display: flex; align-items: stretch; flex: 1; height: 100%;
 }
