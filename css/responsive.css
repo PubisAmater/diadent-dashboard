@@ -127,8 +127,10 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  /* Сайдбар скрыт — основная навигация через топбар */
-  .sidebar { display: none; }
+  /* Сайдбар — иконочная полоса 44px */
+  .sidebar { width: 44px; }
+  .sidebar.collapsed { width: 44px; }
+  .sb-section-label { opacity: 0; height: 0; padding: 0; overflow: hidden; }
 
   .main-content { padding: 10px; padding-bottom: 16px; }
   .ecard { padding: 14px; }
