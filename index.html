@@ -9,25 +9,68 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 
 <!-- CSS modules -->
-<link rel="stylesheet" href="css/base.css?v=3">
-<link rel="stylesheet" href="css/group.css?v=3">
-<link rel="stylesheet" href="css/clinics.css?v=3">
-<link rel="stylesheet" href="css/doctors.css?v=3">
-<link rel="stylesheet" href="css/responsive.css?v=3">
+<link rel="stylesheet" href="css/base.css?v=4">
+<link rel="stylesheet" href="css/group.css?v=4">
+<link rel="stylesheet" href="css/clinics.css?v=4">
+<link rel="stylesheet" href="css/doctors.css?v=4">
+<link rel="stylesheet" href="css/responsive.css?v=4">
 </head>
 <body>
 <div class="app">
 
-  <div class="sidebar">
-    <button class="sb-logo" onclick="sw('group', document.querySelector('.sb-nav .sb-item'))">
-      <div class="lm-badge"><img src="logo.png" alt="Диадент" height="24"></div>
-    </button>
+  <div class="sidebar" id="sidebar">
+    <div class="sb-top">
+      <button class="sb-logo" onclick="sw('group', document.querySelector('#sidebar .sb-item[data-tab=group]'))">
+        <div class="lm-badge"><img src="logo.png" alt="Диадент"></div>
+      </button>
+      <button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" title="Свернуть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
     <nav class="sb-nav">
-      <button class="sb-item on" onclick="sw('group',this)">Группа</button>
-      <button class="sb-item" onclick="sw('clinics',this)">Филиалы</button>
-      <button class="sb-item doc-tab" id="tab-doctors" onclick="sw('doctors',this)">Врачи</button>
+      <!-- Группа -->
+      <button class="sb-item on" data-tab="group" onclick="sw('group',this)">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="4" height="12"/><rect x="10" y="4" width="4" height="17"/><rect x="17" y="13" width="4" height="8"/></svg>
+        <span class="sb-label">Группа</span>
+      </button>
+
+      <!-- Филиалы с дропдауном -->
+      <div class="sb-group" id="sb-clinics-group">
+        <button class="sb-item" data-tab="clinics" onclick="toggleClinicsDrop(this)">
+          <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M9 21V8l3-5 3 5v13M9 13h6"/><path d="M1 21h22"/></svg>
+          <span class="sb-label">Филиалы</span>
+          <svg class="sb-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="sb-drop" id="clinics-drop">
+          <button class="sb-subitem" onclick="openClinic('serpukhovskaya')">Серпуховская</button>
+          <button class="sb-subitem" onclick="openClinic('bukharestskaya')">Бухарестская</button>
+          <button class="sb-subitem" onclick="openClinic('svetlanovsky')">Светлановский</button>
+          <button class="sb-subitem" onclick="openClinic('engelsa')">Энгельса</button>
+          <button class="sb-subitem" onclick="openClinic('kupchinskaya')">Купчинская</button>
+        </div>
+      </div>
+
+      <!-- Учебный центр -->
+      <button class="sb-item" data-tab="education" onclick="sw('education',this)">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span class="sb-label">Учебный центр</span>
+      </button>
+
+      <!-- Зуботехн. лаборатория -->
+      <button class="sb-item" data-tab="lab" onclick="sw('lab',this)">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3h6M8 3v8l-4 9h16l-4-9V3"/><line x1="6" y1="14" x2="18" y2="14"/></svg>
+        <span class="sb-label">Зуботехн. лаборатория</span>
+      </button>
+
+      <!-- Врачи -->
+      <button class="sb-item doc-tab" id="tab-doctors" data-tab="doctors" onclick="sw('doctors',this)">
+        <svg class="sb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="sb-label">Врачи</span>
+      </button>
     </nav>
-    <div class="sb-date">28 марта 2026</div>
+
+    <div class="sb-date"><span class="sb-label">28 марта 2026</span></div>
   </div>
 
   <div class="main-content">
@@ -296,6 +339,24 @@
         <div id="doc-list"></div>
       </div>
       <div class="doc-detail" id="doc-detail"></div>
+    </div>
+  </div>
+
+  <!-- ═══ EDUCATION TAB ═══ -->
+  <div id="vedu" class="hidden">
+    <div class="card" style="padding:40px;text-align:center;color:#9B9A97;">
+      <div style="font-size:48px;margin-bottom:16px;">🎓</div>
+      <div style="font-size:18px;font-weight:600;color:#37352F;margin-bottom:8px;">Учебный центр</div>
+      <div style="font-size:13px;">Раздел в разработке</div>
+    </div>
+  </div>
+
+  <!-- ═══ LAB TAB ═══ -->
+  <div id="vlab" class="hidden">
+    <div class="card" style="padding:40px;text-align:center;color:#9B9A97;">
+      <div style="font-size:48px;margin-bottom:16px;">🔬</div>
+      <div style="font-size:18px;font-weight:600;color:#37352F;margin-bottom:8px;">Зуботехническая лаборатория</div>
+      <div style="font-size:13px;">Раздел в разработке</div>
     </div>
   </div>
 
