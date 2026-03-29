@@ -243,6 +243,9 @@
 .prod-val { font-size: 12px; font-weight: 700; width: 52px; text-align: right; flex-shrink: 0; color: #37352F; }
 .prod-sub { font-size: 11px; color: #9B9A97; width: 40px; text-align: right; flex-shrink: 0; }
 
+/* 3-column dp-row variant */
+.dp-row.dp-3 { grid-template-columns: 2fr 1fr 1fr; }
+
 /* Drill link button */
 .card-drill-link {
   display: flex; align-items: center; justify-content: space-between;
