@@ -40,6 +40,11 @@ function _swNoHistory(tab) {
 }
 
 function sw(tab, btn) {
+  // Close mobile sidebar on navigation
+  if (window.matchMedia('(max-width: 680px)').matches) {
+    document.getElementById('sidebar').classList.remove('mobile-open');
+  }
+
   // Push to history (truncate forward stack)
   if (navHistory[navIndex] !== tab) {
     navHistory.splice(navIndex + 1);
@@ -75,7 +80,12 @@ function sw(tab, btn) {
 }
 
 function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('collapsed');
+  const sidebar = document.getElementById('sidebar');
+  if (window.matchMedia('(max-width: 680px)').matches) {
+    sidebar.classList.toggle('mobile-open');
+  } else {
+    sidebar.classList.toggle('collapsed');
+  }
 }
 
 function toggleDrill(btn, panelId) {

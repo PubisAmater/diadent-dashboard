@@ -1,7 +1,7 @@
 /* ═══ RESPONSIVE ═══
    Принцип: шрифты чисел НЕ трогаем.
    Адаптируемся через: padding, gap, columns, wrap.
-   Breakpoints: 1280 → 1080 → 900 → 680 → 480
+   Breakpoints: 1280 → 1200 → 900 → 680 → 480
 */
 
 /* ── Общие правила: min-width: 0 чтобы грид не переполнялся ── */
@@ -82,9 +82,10 @@
 
 /* ══════════════════════════════════════════
    680px — таблет/большой телефон
+   ВАЖНО: .app НЕ получает padding — топбар
+   должен быть edge-to-edge для sticky
 ══════════════════════════════════════════ */
 @media (max-width: 680px) {
-  .app { padding: 12px; }
   .hero { padding: 18px; }
   .nc { padding: 16px; }
   .coef { padding: 18px; }
@@ -97,16 +98,31 @@
   /* Три коэф. → 1 колонка */
   .row3 { grid-template-columns: 1fr; }
 
-  /* Топбар: табы переносятся */
+  /* Топбар: табы */
   .topbar { padding: 0 10px; gap: 0; }
   .tb-tab { padding: 0 12px; font-size: 12px; }
   .tb-date { display: none; }
   .tb-logo { margin-right: 10px; }
 
-  /* Сайдбар сворачивается */
+  /* ── Сайдбар: иконки только, раскрывается оверлеем ── */
   .sidebar { width: 48px; }
-  .sb-label { opacity: 0; width: 0; pointer-events: none; }
-  .sb-item { justify-content: center; padding: 8px 0; }
+  .sidebar .sb-label { opacity: 0; width: 0; pointer-events: none; }
+  .sidebar .sb-item { justify-content: center; padding: 8px 0; }
+  .sb-section-label { opacity: 0; height: 0; overflow: hidden; padding: 0; }
+
+  /* Раскрытый сайдбар — оверлей поверх контента */
+  .sidebar.mobile-open {
+    width: 200px;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    height: calc(100vh - 52px);
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0,0,0,.15);
+  }
+  .sidebar.mobile-open .sb-label { opacity: 1; width: auto; pointer-events: auto; }
+  .sidebar.mobile-open .sb-section-label { opacity: 1; height: auto; padding: 10px 10px 4px; overflow: visible; }
+  .sidebar.mobile-open .sb-item { justify-content: flex-start; padding: 8px 10px; }
 
   .main-content { padding: 12px; }
 
@@ -127,23 +143,20 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  /* Сайдбар — иконочная полоса 44px */
+  /* Сайдбар — 44px иконки, раскрывается в оверлей */
   .sidebar { width: 44px; }
-  .sidebar.collapsed { width: 44px; }
-  .sb-section-label { opacity: 0; height: 0; padding: 0; overflow: hidden; }
+  .sidebar.mobile-open { width: 200px; }
 
   .main-content { padding: 10px; padding-bottom: 16px; }
   .ecard { padding: 14px; }
   .hero { padding: 16px; }
   .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
 
-  /* hero-top остаётся строкой — без сайдбара места достаточно */
-
   /* nc-head → вертикаль */
   .nc-head { flex-direction: column; gap: 8px; }
   .nc-pn { text-align: left !important; }
 
-  /* Убираем боковой паддинг у cmp на совсем узком */
+  /* cmp на совсем узком */
   .cmp { grid-template-columns: 1fr 1fr; gap: 12px; }
 
   /* Доктор top → вертикаль */
