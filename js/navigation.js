@@ -31,6 +31,13 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('collapsed');
 }
 
+function toggleDrill(btn, panelId) {
+  const panel = document.getElementById(panelId);
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+
 function toggleSpec(row, drillId) {
   const drill = document.getElementById(drillId);
   const isOpen = row.classList.contains('active');

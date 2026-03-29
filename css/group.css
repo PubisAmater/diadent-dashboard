@@ -4,6 +4,60 @@
 .row1 { display: grid; grid-template-columns: 1fr 320px; gap: 16px; margin-bottom: 16px; }
 .row2 { margin-bottom: 16px; }
 
+/* ── Drill-down toggle & panel ── */
+.drill-toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; color: #9B9A97; padding: 8px 0 0;
+  width: 100%; transition: color .15s;
+}
+.drill-toggle:hover { color: #2B5F8E; }
+.drill-toggle-label { flex: 1; text-align: left; }
+.drill-toggle-chev {
+  width: 14px; height: 14px;
+  transition: transform .25s ease;
+}
+.drill-toggle.open .drill-toggle-chev { transform: rotate(180deg); }
+.drill-toggle.open .drill-toggle-label::after { content: ''; }
+
+.drill-panel {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease;
+}
+.drill-panel.open { max-height: 600px; }
+
+.drill-panel-inner {
+  border-top: 1px solid #F0EFEB;
+  padding-top: 14px; margin-top: 8px;
+}
+
+.dp-section {
+  font-size: 10px; font-weight: 600; color: #9B9A97;
+  text-transform: uppercase; letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.dp-table { display: flex; flex-direction: column; gap: 0; }
+.dp-row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 8px; padding: 6px 0;
+  border-bottom: 1px solid #F7F6F3;
+  font-size: 12px; color: #37352F;
+}
+.dp-row:last-child { border-bottom: none; }
+.dp-head { font-size: 10px; color: #9B9A97; font-weight: 600; padding-bottom: 4px; }
+.dp-row span:not(:first-child) { text-align: right; }
+.dp-cur { font-weight: 700; background: #F7FBFF; border-radius: 5px; padding: 6px 6px; }
+
+.dp-weeks { display: flex; flex-direction: column; gap: 8px; }
+.dp-week { display: grid; grid-template-columns: 140px 1fr 70px; align-items: center; gap: 10px; }
+.dp-wlbl { font-size: 12px; color: #37352F; }
+.dp-wlbl span { font-size: 10px; color: #9B9A97; display: block; }
+.dp-wbar { height: 6px; background: #F0EFEB; border-radius: 3px; overflow: hidden; }
+.dp-wbar div { height: 100%; border-radius: 3px; }
+.dp-wval { font-size: 12px; font-weight: 600; color: #37352F; text-align: right; }
+.dp-wval span { font-size: 10px; color: #9B9A97; display: block; font-weight: 400; }
+
 /* Segment summary list */
 .seg-list { display: flex; flex-direction: column; gap: 10px; }
 .seg-card {
