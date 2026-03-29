@@ -31,7 +31,7 @@ function _swNoHistory(tab) {
   document.querySelectorAll('.tb-tab, .sb-item').forEach(b => b.classList.remove('on'));
   const btn = document.querySelector(`.tb-tab[data-tab="${tab}"]`) || document.querySelector(`.sb-item[data-tab="${tab}"]`);
   if (btn) btn.classList.add('on');
-  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production','vrev','vebitda','vexpenses'].forEach(id => {
+  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production','vrev','vebitda','vexpenses','vnetprofit'].forEach(id => {
     const el = document.getElementById(id); if (el) el.classList.add('hidden');
   });
   const map = { group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab', 'dept-sales':'vdept-sales', 'dept-marketing':'vdept-marketing', 'dept-hr':'vdept-hr', 'dept-tech':'vdept-tech', 'dept-production':'vdept-production', revenue:'vrev', ebitda:'vebitda' };
@@ -53,7 +53,7 @@ function sw(tab, btn) {
   if (btn) btn.classList.add('on');
 
   // Hide all views
-  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production','vrev','vebitda','vexpenses'].forEach(id => {
+  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production','vrev','vebitda','vexpenses','vnetprofit'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
@@ -63,7 +63,7 @@ function sw(tab, btn) {
     group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab',
     'dept-sales':'vdept-sales', 'dept-marketing':'vdept-marketing',
     'dept-hr':'vdept-hr', 'dept-tech':'vdept-tech', 'dept-production':'vdept-production',
-    revenue:'vrev', ebitda:'vebitda', expenses:'vexpenses'
+    revenue:'vrev', ebitda:'vebitda', expenses:'vexpenses', netprofit:'vnetprofit'
   };
   const viewId = map[tab];
   if (viewId) document.getElementById(viewId).classList.remove('hidden');
