@@ -164,6 +164,46 @@ body {
   min-width: 0; overflow-x: hidden;
 }
 
+/* ═══ INFO TOOLTIPS ═══ */
+.tip {
+  position: relative;
+  display: inline-flex; align-items: center;
+  margin-left: 4px; vertical-align: middle;
+  cursor: help; flex-shrink: 0;
+}
+.tip-ic {
+  width: 13px; height: 13px;
+  color: #D0CEC9; transition: color .15s;
+  flex-shrink: 0;
+}
+.tip:hover .tip-ic { color: #2B5F8E; }
+.tip-box {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%);
+  background: #1F1F1E; color: #E8E7E4;
+  font-size: 12px; line-height: 1.6; font-weight: 400;
+  padding: 10px 13px; border-radius: 9px;
+  width: 240px; min-width: 200px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  z-index: 300; pointer-events: none;
+  white-space: normal; text-transform: none; letter-spacing: 0;
+}
+.tip-box b { color: #fff; font-weight: 600; }
+.tip-box::after {
+  content: ''; position: absolute;
+  top: 100%; left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: #1F1F1E;
+}
+.tip:hover .tip-box { display: block; }
+/* right-edge: box opens to the left */
+.tip.tr .tip-box { left: auto; right: 0; transform: none; }
+.tip.tr .tip-box::after { left: auto; right: 10px; transform: none; }
+/* center-right nudge */
+.tip.tc .tip-box { left: auto; right: -10px; transform: none; }
+.tip.tc .tip-box::after { left: auto; right: 15px; transform: none; }
+
 /* Legend */
 .leg { display: flex; gap: 18px; font-size: 12px; color: #9B9A97; margin-bottom: 14px; }
 .li { display: flex; align-items: center; gap: 6px; }
