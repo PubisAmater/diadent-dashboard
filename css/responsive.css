@@ -127,12 +127,15 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  .main-content { padding: 10px; padding-bottom: 70px; }
+  /* Сайдбар скрыт — основная навигация через топбар */
+  .sidebar { display: none; }
+
+  .main-content { padding: 10px; padding-bottom: 16px; }
+  .ecard { padding: 14px; }
+  .hero { padding: 16px; }
   .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
 
-  /* hero-top → вертикаль */
-  .hero-top { flex-direction: column; gap: 12px; align-items: flex-start; }
-  .hero-top > div:last-child { text-align: left !important; }
+  /* hero-top остаётся строкой — без сайдбара места достаточно */
 
   /* nc-head → вертикаль */
   .nc-head { flex-direction: column; gap: 8px; }
