@@ -573,41 +573,93 @@
       <div style="font-size:18px;font-weight:700;color:#37352F;">Детальный анализ чистой прибыли</div>
     </div>
 
+    <!-- Row 1: summary + waterfall -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-      <div class="card">
-        <div class="h-label" style="margin-bottom:12px;">Чистая прибыль · март 2026</div>
-        <div style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:6px;">~5,8 <span style="font-size:16px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
-        <div style="font-size:12px;color:#9B9A97;margin-bottom:20px;">маржа ~19% · цель ≥ 18%</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;">
-          <div><div class="cmp-label">Прогноз месяца</div><div class="cmp-val" style="color:#2E8B57;">~6,0 млн</div><div class="cmp-hint">к закрытию марта</div></div>
-          <div><div class="cmp-label">vs Март 2025</div><div class="cmp-val up">+23%</div><div class="cmp-hint">было ~4,7 млн</div></div>
-          <div><div class="cmp-label">vs Февраль 2026</div><div class="cmp-val up">+2%</div><div class="cmp-hint">было 5,7 млн</div></div>
-          <div><div class="cmp-label">Резерв роста</div><div class="cmp-val am">+1,5 млн</div><div class="cmp-hint">расходники 19% → 12%</div></div>
+      <div class="hero" style="padding:22px 26px;">
+        <div class="h-label">Март 2026 · факт</div>
+        <div class="h-num">~5,8 <span style="font-size:18px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div class="cmp" style="margin-top:16px;padding-top:14px;grid-template-columns:1fr 1fr;gap:12px 0;">
+          <div class="cmp-c" style="padding:0 14px 0 0;border-right:1px solid #F0EFEB;"><div class="cmp-label">vs Март 2025</div><div class="cmp-val up">+23%</div><div class="cmp-hint">было ~4,7 млн</div></div>
+          <div class="cmp-c" style="padding:0 0 0 14px;border-right:none;"><div class="cmp-label">vs Февраль</div><div class="cmp-val up">+2%</div><div class="cmp-hint">было 5,7 млн</div></div>
+          <div class="cmp-c" style="padding:10px 14px 0 0;border-right:1px solid #F0EFEB;border-top:1px solid #F0EFEB;"><div class="cmp-label">Прогноз</div><div class="cmp-val" style="color:#2E8B57;">~6,0 млн</div><div class="cmp-hint">к закрытию марта</div></div>
+          <div class="cmp-c" style="padding:10px 0 0 14px;border-right:none;border-top:1px solid #F0EFEB;"><div class="cmp-label">Маржа</div><div class="cmp-val up">~19%</div><div class="cmp-hint">цель ≥ 18%</div></div>
         </div>
       </div>
       <div class="card">
-        <div class="h-label" style="margin-bottom:12px;">Как формируется · март 2026</div>
-        <div class="dp-table">
-          <div class="dp-row dp-head"><span>Статья</span><span>Сумма</span><span>% выр.</span><span></span></div>
-          <div class="dp-row"><span style="font-weight:600;">EBITDA</span><span style="font-weight:600;">9,0 млн</span><span class="up">29%</span><span></span></div>
-          <div class="dp-row"><span>− Амортизация</span><span>1,2 млн</span><span>3,9%</span><span class="dn">−</span></div>
-          <div class="dp-row"><span>− Налог на прибыль</span><span>1,5 млн</span><span>4,9%</span><span class="dn">−</span></div>
-          <div class="dp-row"><span>− Проценты по кредитам</span><span>0,5 млн</span><span>1,6%</span><span class="dn">−</span></div>
-          <div class="dp-row dp-cur"><span style="font-weight:700;">Чистая прибыль</span><span style="font-weight:700;">~5,8 млн</span><span class="up" style="font-weight:600;">~19%</span><span></span></div>
+        <div class="sec-title" style="margin-top:0;">Накопленная ЧП · март 2026</div>
+        <div class="dp-weeks">
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 1 (1–7)<span>накопленно</span></div>
+            <div class="dp-wbar"><div style="width:27%;background:#2E8B57;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">1,4 млн<span>+15% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 2 (1–14)<span>накопленно</span></div>
+            <div class="dp-wbar"><div style="width:55%;background:#2E8B57;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">2,9 млн<span>+19% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 3 (1–21)<span>накопленно</span></div>
+            <div class="dp-wbar"><div style="width:82%;background:#2E8B57;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">4,3 млн<span>+21% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 4 (1–28)<span>оценка месяца</span></div>
+            <div class="dp-wbar"><div style="width:97%;background:#B5D9C5;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">~5,8 млн<span>оценка</span></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="sec-title">Динамика чистой прибыли · окт 2025 — март 2026</div>
+    <!-- Row 2: waterfall breakdown -->
+    <div class="sec-title">Из чего складывается · март 2026</div>
     <div class="card" style="margin-bottom:16px;">
       <div class="dp-table">
-        <div class="dp-row dp-head"><span>Месяц</span><span>ЧП</span><span>Маржа</span><span>vs 2025</span></div>
-        <div class="dp-row"><span>Октябрь 2025</span><span>5,4 млн</span><span>19,0%</span><span class="up">+14%</span></div>
-        <div class="dp-row"><span>Ноябрь 2025</span><span>5,6 млн</span><span>18,8%</span><span class="up">+16%</span></div>
-        <div class="dp-row"><span>Декабрь 2025</span><span>5,2 млн</span><span>17,1%</span><span class="up">+10%</span></div>
-        <div class="dp-row"><span>Январь 2026</span><span>5,9 млн</span><span>19,0%</span><span class="up">+19%</span></div>
-        <div class="dp-row"><span>Февраль 2026</span><span>5,7 млн</span><span>19,3%</span><span class="up">+17%</span></div>
-        <div class="dp-row dp-cur"><span>Март 2026</span><span>~5,8 млн</span><span>~19%</span><span class="up">+23%</span></div>
+        <div class="dp-row dp-head"><span>Статья</span><span>Сумма</span><span>% выручки</span><span>Норма</span></div>
+        <div class="dp-row"><span style="font-weight:600;">EBITDA</span><span style="font-weight:600;color:#2E8B57;">9,0 млн</span><span class="up">29,2%</span><span style="color:#9B9A97;">≥ 28,3%</span></div>
+        <div class="dp-row"><span style="padding-left:16px;color:#787774;">− Амортизация оборудования</span><span>0,9 млн</span><span>2,9%</span><span style="color:#9B9A97;">~3%</span></div>
+        <div class="dp-row"><span style="padding-left:16px;color:#787774;">− Амортизация прав аренды</span><span>0,3 млн</span><span>1,0%</span><span style="color:#9B9A97;">~1%</span></div>
+        <div class="dp-row"><span style="padding-left:16px;color:#787774;">− Налог на прибыль (УСН 15%)</span><span>1,5 млн</span><span>4,9%</span><span style="color:#9B9A97;">~5%</span></div>
+        <div class="dp-row"><span style="padding-left:16px;color:#787774;">− Проценты по кредитам</span><span>0,5 млн</span><span>1,6%</span><span style="color:#9B9A97;">≤ 2%</span></div>
+        <div class="dp-row dp-cur"><span style="font-weight:700;">Чистая прибыль</span><span style="font-weight:700;">~5,8 млн</span><span class="up" style="font-weight:600;">~19%</span><span style="color:#2E8B57;font-weight:600;">≥ 18%</span></div>
+      </div>
+    </div>
+
+    <!-- Row 3: monthly dynamics -->
+    <div class="sec-title">Помесячная динамика · окт 2025 — март 2026</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="dp-table">
+        <div class="dp-row dp-head"><span>Месяц</span><span>Выручка</span><span>EBITDA</span><span>ЧП / маржа</span></div>
+        <div class="dp-row"><span>Октябрь 2025</span><span>28,5 млн</span><span>8,5 млн (29,8%)</span><span>5,4 млн · 19,0%</span></div>
+        <div class="dp-row"><span>Ноябрь 2025</span><span>29,8 млн</span><span>8,9 млн (29,9%)</span><span>5,6 млн · 18,8%</span></div>
+        <div class="dp-row"><span>Декабрь 2025</span><span>30,5 млн</span><span>9,0 млн (29,5%)</span><span>5,2 млн · 17,1%</span></div>
+        <div class="dp-row"><span>Январь 2026</span><span>31,2 млн</span><span>9,2 млн (29,5%)</span><span class="up">5,9 млн · 19,0%</span></div>
+        <div class="dp-row"><span>Февраль 2026</span><span>29,5 млн</span><span>8,6 млн (29,2%)</span><span class="up">5,7 млн · 19,3%</span></div>
+        <div class="dp-row dp-cur"><span>Март 2026</span><span>~30,8 млн</span><span>~9,0 млн (~29%)</span><span class="up">~5,8 млн · ~19%</span></div>
+      </div>
+    </div>
+
+    <!-- Row 4: резерв роста -->
+    <div class="sec-title">Резерв роста чистой прибыли</div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px;">
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Оптимизация расходников</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;color:#C07E24;">+1,5 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн/мес</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:6px;">Расходники 19,1% → 12% выручки</div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">EBITDA +2,2 млн → ЧП +1,5 млн</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Рост загрузки клиник</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;color:#C07E24;">+1,2 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн/мес</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:6px;">Серпуховская 51% → 75%, Энгельса 48% → 70%</div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">Дополнительная выручка ~4 млн → ЧП +1,2 млн</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Итоговый потенциал</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;color:#2E8B57;">+2,7 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн/мес</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:6px;">ЧП может составить ~8,5 млн при реализации</div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">Маржа: ~19% → ~24–27%</div>
       </div>
     </div>
   </div><!-- /vnetprofit -->
