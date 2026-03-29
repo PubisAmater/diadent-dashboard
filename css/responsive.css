@@ -1,0 +1,146 @@
+/* ═══ RESPONSIVE ═══
+   Принцип: шрифты чисел НЕ трогаем.
+   Адаптируемся через: padding, gap, columns, wrap.
+   Breakpoints: 1280 → 1080 → 900 → 680 → 480
+*/
+
+/* ── Общие правила: min-width: 0 чтобы грид не переполнялся ── */
+.row1 > *, .row3 > *, .dir-grid > *, .cl-top > *, .cl-bot > *,
+.doc-view > *, .kpi4 > *, .mg > *, .stat2 > *, .cmp > * {
+  min-width: 0;
+}
+
+
+/* ══════════════════════════════════════════
+   1280px — чуть убрать padding снаружи
+══════════════════════════════════════════ */
+@media (max-width: 1280px) {
+  .app { padding: 20px 24px; }
+  .hero { padding: 22px 24px; }
+  .ecard { padding: 20px; }
+  .nc { padding: 20px; }
+}
+
+
+/* ══════════════════════════════════════════
+   1080px — переключаем 3-колонки на 2
+══════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .app { padding: 18px 20px; }
+
+  /* Hero + EBITDA — ужимаем EBITDA */
+  .row1 { grid-template-columns: 1fr 260px; gap: 12px; }
+
+  /* Три коэф. карточки → 2+1 */
+  .row3 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* Направления → 2 колонки */
+  .dir-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* cmp-полоса → 2×2 */
+  .cmp { grid-template-columns: repeat(2, 1fr); gap: 14px 20px; }
+  .cmp-c { border-right: none !important; padding: 0 !important; }
+  .cmp-c:nth-child(odd) { padding-right: 14px !important; border-right: 1px solid #F0EFEB !important; }
+
+  /* Клиники верх → 1 колонка */
+  .cl-top { grid-template-columns: 1fr; }
+  .cl-bot { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+
+/* ══════════════════════════════════════════
+   900px — Hero стакается, грид одноколонный
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .app { padding: 14px 16px; }
+
+  /* Hero + EBITDA → вертикаль */
+  .row1 { grid-template-columns: 1fr; gap: 12px; }
+
+  /* cmp → обратно 4 в ряд (места теперь больше, т.к. нет EBITDA рядом) */
+  .cmp { grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .cmp-c { border-right: 1px solid #F0EFEB !important; padding: 0 16px !important; }
+  .cmp-c:first-child { padding-left: 0 !important; }
+  .cmp-c:last-child { border-right: none !important; padding-right: 0 !important; }
+
+  /* Три коэф. → 3 в ряд снова (есть место) */
+  .row3 { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+  /* Направления → 1 колонка */
+  .dir-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Врачи → стак */
+  .doc-view { grid-template-columns: 1fr; gap: 14px; }
+  .doc-list-panel { max-height: 200px; overflow-y: auto; }
+  .kpi4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Доната → в колонку */
+  .share-content { grid-template-columns: 1fr; }
+  .donut-wrap { margin: 0 auto 16px; }
+
+  /* Клиники */
+  .cl-bot { grid-template-columns: 1fr; }
+}
+
+
+/* ══════════════════════════════════════════
+   680px — таблет/большой телефон
+══════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .app { padding: 12px; }
+  .hero { padding: 18px; }
+  .nc { padding: 16px; }
+  .coef { padding: 18px; }
+  .dc { padding: 16px 18px; }
+
+  /* cmp → 2×2 */
+  .cmp { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cmp-c { border-right: none !important; padding: 0 !important; }
+
+  /* Три коэф. → 1 колонка */
+  .row3 { grid-template-columns: 1fr; }
+
+  /* Хедер → Logo + дата в одну строку, табы снизу */
+  .hdr { flex-wrap: wrap; gap: 10px; row-gap: 8px; }
+  .logo { order: 1; }
+  .dt { order: 2; margin-left: auto; }
+  .tabs { order: 3; width: 100%; }
+  .tb { flex: 1; text-align: center; padding: 8px 10px; }
+
+  /* KPI врача → 2×2 */
+  .kpi4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Формула — переносится */
+  .formula { flex-wrap: wrap; }
+  .fc { min-width: 80px; }
+  .fop { padding: 0 4px; font-size: 16px; }
+
+  /* Метрики → 2 колонки */
+  .mg { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ══════════════════════════════════════════
+   480px — мобильный
+══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .app { padding: 10px; }
+  .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
+
+  /* hero-top → вертикаль */
+  .hero-top { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .hero-top > div:last-child { text-align: left !important; }
+
+  /* nc-head → вертикаль */
+  .nc-head { flex-direction: column; gap: 8px; }
+  .nc-pn { text-align: left !important; }
+
+  /* Убираем боковой паддинг у cmp на совсем узком */
+  .cmp { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Доктор top → вертикаль */
+  .doc-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* share-card → убрать лишнее */
+  .share-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
