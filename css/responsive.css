@@ -26,7 +26,6 @@
    1080px — переключаем 3-колонки на 2
 ══════════════════════════════════════════ */
 @media (max-width: 1080px) {
-  .sidebar { width: 180px; }
   .main-content { padding: 18px 20px; }
 
   /* Hero + EBITDA — ужимаем EBITDA */
@@ -53,7 +52,6 @@
    900px — Hero стакается, грид одноколонный
 ══════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .sidebar { width: 160px; }
   .main-content { padding: 14px 16px; }
 
   /* Hero + EBITDA → вертикаль */
@@ -102,27 +100,18 @@
   /* Три коэф. → 1 колонка */
   .row3 { grid-template-columns: 1fr; }
 
-  /* Sidebar → нижняя панель */
-  .app { flex-direction: column; }
-  .sidebar {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    width: 100% !important; height: 56px; min-height: unset;
-    flex-direction: row; align-items: center;
-    padding: 0; border-right: none;
-    border-top: 1px solid #EBEAE6;
-    z-index: 100; overflow: visible;
-  }
-  .sb-top { display: none; }
-  .sb-nav { flex-direction: row; padding: 0; gap: 0; flex: 1; height: 100%; overflow: visible; }
-  .sb-item { flex: 1; justify-content: center; height: 100%; border-radius: 0; padding: 0; gap: 4px; flex-direction: column; font-size: 10px; }
-  .sb-label { width: auto; opacity: 1; font-size: 10px; }
-  .sb-icon { width: 20px; height: 20px; }
-  .sb-chevron { display: none !important; }
-  .sb-drop { display: none !important; }
-  .sb-date { display: none; }
-  .sb-group { flex: 1; display: flex; }
-  .sb-group > .sb-item { flex: 1; }
-  .main-content { padding: 12px; padding-bottom: 70px; }
+  /* Топбар: табы переносятся */
+  .topbar { padding: 0 10px; gap: 0; }
+  .tb-tab { padding: 0 12px; font-size: 12px; }
+  .tb-date { display: none; }
+  .tb-logo { margin-right: 10px; }
+
+  /* Сайдбар сворачивается */
+  .sidebar { width: 48px; }
+  .sb-label { opacity: 0; width: 0; pointer-events: none; }
+  .sb-item { justify-content: center; padding: 8px 0; }
+
+  .main-content { padding: 12px; }
 
   /* KPI врача → 2×2 */
   .kpi4 { grid-template-columns: repeat(2, 1fr); }

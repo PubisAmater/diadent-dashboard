@@ -1,14 +1,18 @@
-// ═══ TAB NAVIGATION ═══
+// ═══ NAVIGATION ═══
 let prevTab = 'group';
-let prevTabBtn = null;
 
 function sw(tab, btn) {
-  document.querySelectorAll('.sb-item').forEach(b => b.classList.remove('on'));
+  // Clear top tabs and sidebar items
+  document.querySelectorAll('.tb-tab, .sb-item').forEach(b => b.classList.remove('on'));
   if (btn) btn.classList.add('on');
+
+  // Hide all views
   ['vg','vc','vd','vedu','vlab'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
+
+  // Show target view
   const map = { group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab' };
   const viewId = map[tab];
   if (viewId) document.getElementById(viewId).classList.remove('hidden');
@@ -20,37 +24,7 @@ function sw(tab, btn) {
 }
 
 function toggleSidebar() {
-  const sb = document.getElementById('sidebar');
-  sb.classList.toggle('collapsed');
-}
-
-function toggleClinicsDrop(btn) {
-  const group = document.getElementById('sb-clinics-group');
-  const isOpen = group.classList.contains('open');
-  group.classList.toggle('open', !isOpen);
-  // If opening, also navigate to clinics tab
-  if (!isOpen) sw('clinics', btn);
-}
-
-function openClinic(id) {
-  // Navigate to clinics tab and highlight the given clinic
-  const clinicsBtn = document.querySelector('.sb-item[data-tab=clinics]');
-  sw('clinics', clinicsBtn);
-  // Scroll to clinic card
-  const nameMap = {
-    serpukhovskaya: 'Серпуховская', bukharestskaya: 'Бухарестская',
-    svetlanovsky: 'Светлановский', engelsa: 'Энгельса', kupchinskaya: 'Купчинская'
-  };
-  document.querySelectorAll('.sb-subitem').forEach(b => b.classList.remove('on'));
-  setTimeout(() => {
-    const cards = document.querySelectorAll('.nc-name');
-    for (const c of cards) {
-      if (c.textContent.trim() === nameMap[id]) {
-        c.closest('.nc').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        break;
-      }
-    }
-  }, 50);
+  document.getElementById('sidebar').classList.toggle('collapsed');
 }
 
 function toggleSpec(row, drillId) {
@@ -66,11 +40,10 @@ function toggleSpec(row, drillId) {
 }
 
 function openDoctor(id) {
-  const btn = document.getElementById('tab-doctors');
-  prevTabBtn = document.querySelector('.sb-item.on');
-  prevTab = prevTabBtn ? (prevTabBtn.dataset.tab || 'group') : 'group';
+  const activeTop = document.querySelector('.tb-tab.on');
+  prevTab = activeTop ? activeTop.dataset.tab : 'group';
 
-  sw('doctors', btn);
+  sw('doctors', document.getElementById('tab-doctors'));
   document.getElementById('back-link').style.display = 'flex';
   buildDocList();
   selectDoctor(id);
@@ -79,7 +52,6 @@ function openDoctor(id) {
 function goBack() {
   document.getElementById('back-link').style.display = 'none';
   const tabKey = prevTab || 'group';
-  const targetBtn = document.querySelector(`.sb-item[data-tab="${tabKey}"]`);
-  if (targetBtn) sw(tabKey, targetBtn);
-  else sw('group', document.querySelector('.sb-item[data-tab=group]'));
+  const targetBtn = document.querySelector(`.tb-tab[data-tab="${tabKey}"]`);
+  sw(tabKey, targetBtn || document.querySelector('.tb-tab[data-tab=group]'));
 }
