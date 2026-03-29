@@ -9,11 +9,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 
 <!-- CSS modules -->
-<link rel="stylesheet" href="css/base.css?v=9">
-<link rel="stylesheet" href="css/group.css?v=9">
-<link rel="stylesheet" href="css/clinics.css?v=9">
-<link rel="stylesheet" href="css/doctors.css?v=9">
-<link rel="stylesheet" href="css/responsive.css?v=9">
+<link rel="stylesheet" href="css/base.css?v=10">
+<link rel="stylesheet" href="css/group.css?v=10">
+<link rel="stylesheet" href="css/clinics.css?v=10">
+<link rel="stylesheet" href="css/doctors.css?v=10">
+<link rel="stylesheet" href="css/responsive.css?v=10">
 </head>
 <body>
 <div class="app">
@@ -115,35 +115,7 @@
           <div class="cmp-c"><div class="cmp-label">vs Февраль 2026</div><div class="cmp-val up">+9%</div><div class="cmp-hint">было 28,2 млн</div></div>
           <div class="cmp-c"><div class="cmp-label">EBITDA-маржа</div><div class="cmp-val up">~30%</div><div class="cmp-hint">~9,2 млн ₽</div></div>
         </div>
-
-        <!-- Expand toggle -->
-        <button class="drill-toggle" onclick="toggleDrill(this,'hero-drill')">
-          <span class="drill-toggle-label">Подробнее</span>
-          <svg class="drill-toggle-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-
-        <!-- Drill-down detail -->
-        <div class="drill-panel" id="hero-drill">
-          <div class="drill-panel-inner">
-            <div class="dp-section">Помесячно · последние 6 месяцев</div>
-            <div class="dp-table">
-              <div class="dp-row dp-head"><span>Месяц</span><span>Факт</span><span>План</span><span>vs 2025</span></div>
-              <div class="dp-row"><span>Октябрь 2025</span><span>22,1 млн</span><span>23,0 млн</span><span class="up">+12%</span></div>
-              <div class="dp-row"><span>Ноябрь 2025</span><span>24,3 млн</span><span>24,0 млн</span><span class="up">+14%</span></div>
-              <div class="dp-row"><span>Декабрь 2025</span><span>26,0 млн</span><span>25,0 млн</span><span class="up">+16%</span></div>
-              <div class="dp-row"><span>Январь 2026</span><span>25,9 млн</span><span>28,0 млн</span><span class="up">+8%</span></div>
-              <div class="dp-row"><span>Февраль 2026</span><span>28,2 млн</span><span>30,0 млн</span><span class="up">+11%</span></div>
-              <div class="dp-row dp-cur"><span>Март 2026</span><span>~35 млн</span><span>35,0 млн</span><span class="up">+19%</span></div>
-            </div>
-            <div class="dp-section" style="margin-top:16px;">Понедельно · март 2026</div>
-            <div class="dp-weeks">
-              <div class="dp-week"><div class="dp-wlbl">Неделя 1 <span>1–7 мар</span></div><div class="dp-wbar"><div style="width:100%;background:#2B5F8E;"></div></div><div class="dp-wval">8,2 млн</div></div>
-              <div class="dp-week"><div class="dp-wlbl">Неделя 2 <span>8–14 мар</span></div><div class="dp-wbar"><div style="width:96%;background:#2B5F8E;"></div></div><div class="dp-wval">7,9 млн</div></div>
-              <div class="dp-week"><div class="dp-wlbl">Неделя 3 <span>15–21 мар</span></div><div class="dp-wbar"><div style="width:99%;background:#2B5F8E;"></div></div><div class="dp-wval">8,1 млн</div></div>
-              <div class="dp-week"><div class="dp-wlbl">Неделя 4 <span>22–28 мар</span></div><div class="dp-wbar"><div style="width:80%;background:#B5D2EE;"></div></div><div class="dp-wval am">6,6 млн <span>4 дня</span></div></div>
-            </div>
-          </div>
-        </div>
+        <button class="card-drill-link" onclick="sw('revenue', null)">Детальный анализ выручки <span>›</span></button>
       </div>
       <div class="ecard">
         <div class="h-label">EBITDA · март 2026</div>
@@ -154,24 +126,7 @@
           <div class="erow"><div class="erow-m">Февраль 2026</div><div><div class="erow-v">8,0 млн</div><div class="erow-p">маржа 28,2%</div></div></div>
           <div class="erow"><div class="erow-m" style="font-weight:700;color:#1A1A18;">Март (оценка)</div><div><div class="erow-v up">~9,2 млн</div><div class="erow-p up">маржа ~30%</div></div></div>
         </div>
-        <button class="drill-toggle" style="margin-top:12px;" onclick="toggleDrill(this,'ebitda-drill')">
-          <span class="drill-toggle-label">Подробнее</span>
-          <svg class="drill-toggle-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="drill-panel" id="ebitda-drill">
-          <div class="drill-panel-inner">
-            <div class="dp-section">Динамика EBITDA</div>
-            <div class="dp-table">
-              <div class="dp-row dp-head"><span>Месяц</span><span>EBITDA</span><span>Маржа</span><span>vs 2025</span></div>
-              <div class="dp-row"><span>Октябрь 2025</span><span>5,5 млн</span><span>25%</span><span class="up">+18%</span></div>
-              <div class="dp-row"><span>Ноябрь 2025</span><span>6,2 млн</span><span>26%</span><span class="up">+21%</span></div>
-              <div class="dp-row"><span>Декабрь 2025</span><span>6,8 млн</span><span>26%</span><span class="up">+15%</span></div>
-              <div class="dp-row"><span>Январь 2026</span><span>7,3 млн</span><span>27,5%</span><span class="up">+22%</span></div>
-              <div class="dp-row"><span>Февраль 2026</span><span>8,0 млн</span><span>28,2%</span><span class="up">+19%</span></div>
-              <div class="dp-row dp-cur"><span>Март 2026</span><span>~9,2 млн</span><span>~30%</span><span class="up">+24%</span></div>
-            </div>
-          </div>
-        </div>
+        <button class="card-drill-link" onclick="sw('ebitda', null)">Детальный анализ EBITDA <span>›</span></button>
       </div>
     </div>
 
@@ -319,6 +274,180 @@
   <div id="vdept-hr" class="hidden"><div class="dept-placeholder"><div class="dept-ph-icon">👥</div><div class="dept-ph-title">HR</div><div class="dept-ph-sub">Раздел в разработке</div></div></div>
   <div id="vdept-tech" class="hidden"><div class="dept-placeholder"><div class="dept-ph-icon">🔧</div><div class="dept-ph-title">Технический отдел</div><div class="dept-ph-sub">Раздел в разработке</div></div></div>
   <div id="vdept-production" class="hidden"><div class="dept-placeholder"><div class="dept-ph-icon">🔬</div><div class="dept-ph-title">Отдел производства</div><div class="dept-ph-sub">Раздел в разработке</div></div></div>
+
+  <!-- ═══ REVENUE DETAIL ═══ -->
+  <div id="vrev" class="hidden">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <button onclick="histBack()" style="background:none;border:none;cursor:pointer;font-size:13px;color:#2B5F8E;padding:6px 10px;border-radius:7px;display:flex;align-items:center;gap:6px;transition:background .15s;" onmouseover="this.style.background='#EBF4FF'" onmouseout="this.style.background='none'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg> Назад к Группе
+      </button>
+      <div style="font-size:18px;font-weight:700;color:#37352F;">Детальный анализ выручки</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div class="hero" style="padding:22px 26px;">
+        <div class="h-label">Март 2026 · факт</div>
+        <div class="h-num">30,8 <span style="font-size:18px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div class="pbar" style="margin-top:16px;">
+          <div class="pbar-f" style="width:88%;background:#2B5F8E;border-radius:5px 0 0 5px;"></div>
+          <div class="pbar-f" style="width:6%;background:#B5D2EE;"></div>
+        </div>
+        <div class="pbar-lbs"><span style="color:#2B5F8E;font-weight:600;">■ Факт 30,8</span><span style="color:#7BA5C8;font-weight:600;">■ Прогноз +4,2</span><span style="color:#D0CEC9;">план 35,0</span></div>
+        <div class="cmp" style="margin-top:16px;padding-top:14px;">
+          <div class="cmp-c"><div class="cmp-label">vs Март 2025</div><div class="cmp-val up">+19%</div><div class="cmp-hint">было 25,9 млн</div></div>
+          <div class="cmp-c"><div class="cmp-label">vs Февраль</div><div class="cmp-val up">+9%</div><div class="cmp-hint">было 28,2 млн</div></div>
+          <div class="cmp-c"><div class="cmp-label">Прогноз</div><div class="cmp-val" style="color:#2B5F8E;">~35 млн</div><div class="cmp-hint">к концу марта</div></div>
+          <div class="cmp-c"><div class="cmp-label">Выполнение</div><div class="cmp-val am">88%</div><div class="cmp-hint">план 35,0 млн</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-title" style="margin-top:0;">Понедельно · март 2026</div>
+        <div class="dp-weeks">
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 1 (1–7)<span>пн–вс</span></div>
+            <div class="dp-wbar"><div style="width:76%;background:#2B5F8E;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">7,6 млн<span>+12% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 2 (8–14)<span>пн–вс</span></div>
+            <div class="dp-wbar"><div style="width:82%;background:#2B5F8E;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">8,2 млн<span>+18% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 3 (15–21)<span>пн–вс</span></div>
+            <div class="dp-wbar"><div style="width:78%;background:#2B5F8E;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">7,8 млн<span>+17% к пр. г.</span></div>
+          </div>
+          <div class="dp-week">
+            <div class="dp-wlbl">Неделя 4 (22–28)<span>неполная</span></div>
+            <div class="dp-wbar"><div style="width:72%;background:#B5D2EE;height:100%;border-radius:3px;"></div></div>
+            <div class="dp-wval">7,2 млн<span>оценка</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-title">Динамика выручки · окт 2025 — март 2026</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="dp-table">
+        <div class="dp-row dp-head"><span>Месяц</span><span>Факт</span><span>План</span><span>vs 2025</span></div>
+        <div class="dp-row"><span>Октябрь 2025</span><span>22,0 млн</span><span>23,0 млн</span><span class="up">+14%</span></div>
+        <div class="dp-row"><span>Ноябрь 2025</span><span>23,8 млн</span><span>24,0 млн</span><span class="up">+16%</span></div>
+        <div class="dp-row"><span>Декабрь 2025</span><span>26,1 млн</span><span>26,0 млн</span><span class="up">+12%</span></div>
+        <div class="dp-row"><span>Январь 2026</span><span>26,5 млн</span><span>27,0 млн</span><span class="up">+18%</span></div>
+        <div class="dp-row"><span>Февраль 2026</span><span>28,2 млн</span><span>29,0 млн</span><span class="up">+20%</span></div>
+        <div class="dp-row dp-cur"><span>Март 2026</span><span>30,8 млн</span><span>35,0 млн</span><span class="up">+19%</span></div>
+      </div>
+    </div>
+
+    <div class="sec-title">Выручка по сегментам · март 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Медицинская деятельность</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;">26,8 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">87% общей выручки</div>
+        <div class="dp-table" style="margin-top:12px;">
+          <div class="dp-row dp-head"><span>Клиника</span><span>Факт</span><span>%</span></div>
+          <div class="dp-row"><span>Серпуховская</span><span>7,2 млн</span><span>27%</span></div>
+          <div class="dp-row"><span>Бухарестская</span><span>9,5 млн</span><span>35%</span></div>
+          <div class="dp-row"><span>Светлановский</span><span>3,8 млн</span><span>14%</span></div>
+          <div class="dp-row"><span>Энгельса</span><span>4,1 млн</span><span>15%</span></div>
+          <div class="dp-row"><span>Купчинская</span><span>2,2 млн</span><span>8%</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Учебный центр</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;">2,8 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">9% общей выручки</div>
+        <div class="dp-table" style="margin-top:12px;">
+          <div class="dp-row dp-head"><span>Курс</span><span>Факт</span><span>%</span></div>
+          <div class="dp-row"><span>Имплантология</span><span>1,2 млн</span><span>43%</span></div>
+          <div class="dp-row"><span>Ортодонтия</span><span>0,8 млн</span><span>29%</span></div>
+          <div class="dp-row"><span>Хирургия</span><span>0,5 млн</span><span>18%</span></div>
+          <div class="dp-row"><span>Прочие</span><span>0,3 млн</span><span>11%</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Зуботехн. лаборатория</div>
+        <div style="font-size:28px;font-weight:800;letter-spacing:-.025em;">1,2 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">4% общей выручки</div>
+        <div class="dp-table" style="margin-top:12px;">
+          <div class="dp-row dp-head"><span>Тип работ</span><span>Факт</span><span>%</span></div>
+          <div class="dp-row"><span>Коронки</span><span>0,5 млн</span><span>42%</span></div>
+          <div class="dp-row"><span>Протезы</span><span>0,4 млн</span><span>33%</span></div>
+          <div class="dp-row"><span>Имплантаты</span><span>0,2 млн</span><span>17%</span></div>
+          <div class="dp-row"><span>Прочие</span><span>0,1 млн</span><span>8%</span></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /vrev -->
+
+  <!-- ═══ EBITDA DETAIL ═══ -->
+  <div id="vebitda" class="hidden">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+      <button onclick="histBack()" style="background:none;border:none;cursor:pointer;font-size:13px;color:#2B5F8E;padding:6px 10px;border-radius:7px;display:flex;align-items:center;gap:6px;transition:background .15s;" onmouseover="this.style.background='#EBF4FF'" onmouseout="this.style.background='none'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg> Назад к Группе
+      </button>
+      <div style="font-size:18px;font-weight:700;color:#37352F;">Детальный анализ EBITDA</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div class="hero" style="padding:22px 26px;">
+        <div class="h-label">EBITDA · март 2026 (оценка)</div>
+        <div class="h-num" style="color:#2E8B57;">~9,2 <span style="font-size:18px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:8px;">маржа ~30% · прогноз на основе факта 1–28 марта</div>
+        <div class="cmp" style="margin-top:20px;padding-top:16px;">
+          <div class="cmp-c"><div class="cmp-label">vs Март 2025</div><div class="cmp-val up">+24%</div><div class="cmp-hint">было ~7,4 млн</div></div>
+          <div class="cmp-c"><div class="cmp-label">vs Февраль</div><div class="cmp-val up">+15%</div><div class="cmp-hint">было 8,0 млн</div></div>
+          <div class="cmp-c"><div class="cmp-label">Маржа</div><div class="cmp-val up">~30%</div><div class="cmp-hint">цель ≥28%</div></div>
+          <div class="cmp-c"><div class="cmp-label">YTD 2026</div><div class="cmp-val up">24,5 млн</div><div class="cmp-hint">3 мес.</div></div>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="h-label">Структура расходов · март</div>
+        <div class="dp-table" style="margin-top:8px;">
+          <div class="dp-row dp-head"><span>Статья</span><span>Сумма</span><span>% выр.</span></div>
+          <div class="dp-row"><span>Выручка</span><span>30,8 млн</span><span>100%</span></div>
+          <div class="dp-row"><span>Прямые расходы</span><span>15,4 млн</span><span>50%</span></div>
+          <div class="dp-row"><span>Валовая прибыль</span><span>15,4 млн</span><span>50%</span></div>
+          <div class="dp-row"><span>Операц. расходы</span><span>6,2 млн</span><span>20%</span></div>
+          <div class="dp-row dp-cur"><span>EBITDA</span><span>~9,2 млн</span><span>~30%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-title">Динамика EBITDA · окт 2025 — март 2026</div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="dp-table">
+        <div class="dp-row dp-head"><span>Месяц</span><span>EBITDA</span><span>Маржа</span><span>vs 2025</span></div>
+        <div class="dp-row"><span>Октябрь 2025</span><span>5,5 млн</span><span>25%</span><span class="up">+18%</span></div>
+        <div class="dp-row"><span>Ноябрь 2025</span><span>6,2 млн</span><span>26%</span><span class="up">+21%</span></div>
+        <div class="dp-row"><span>Декабрь 2025</span><span>6,8 млн</span><span>26%</span><span class="up">+15%</span></div>
+        <div class="dp-row"><span>Январь 2026</span><span>7,3 млн</span><span>27,5%</span><span class="up">+22%</span></div>
+        <div class="dp-row"><span>Февраль 2026</span><span>8,0 млн</span><span>28,2%</span><span class="up">+19%</span></div>
+        <div class="dp-row dp-cur"><span>Март 2026 (оценка)</span><span>~9,2 млн</span><span>~30%</span><span class="up">+24%</span></div>
+      </div>
+    </div>
+
+    <div class="sec-title">EBITDA по сегментам · март 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Медицинская деятельность</div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.025em;color:#2E8B57;">7,5 <span style="font-size:13px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">маржа 28% · 81% от общей EBITDA</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Учебный центр</div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.025em;color:#2E8B57;">1,4 <span style="font-size:13px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">маржа 51% · 15% от общей EBITDA</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:#9B9A97;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:500;">Зуботехн. лаборатория</div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.025em;">0,3 <span style="font-size:13px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
+        <div style="font-size:12px;color:#9B9A97;margin-top:4px;">маржа 21% · 4% от общей EBITDA</div>
+      </div>
+    </div>
+  </div><!-- /vebitda -->
 
   </div><!-- /main-content -->
   </div><!-- /body-wrap -->

@@ -243,6 +243,18 @@
 .prod-val { font-size: 12px; font-weight: 700; width: 52px; text-align: right; flex-shrink: 0; color: #37352F; }
 .prod-sub { font-size: 11px; color: #9B9A97; width: 40px; text-align: right; flex-shrink: 0; }
 
+/* Drill link button */
+.card-drill-link {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; margin-top: 16px; padding: 10px 14px;
+  background: #F7F6F3; border: none; border-radius: 8px;
+  font-size: 13px; font-weight: 500; color: #2B5F8E;
+  cursor: pointer; transition: background .15s, color .15s;
+  text-align: left;
+}
+.card-drill-link:hover { background: #EBF4FF; }
+.card-drill-link span { font-size: 16px; color: #BBBAB5; }
+
 /* Stat 2-col grid */
 .stat2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
 .si { background: #FAFAF8; border-radius: 8px; padding: 10px 12px; }
