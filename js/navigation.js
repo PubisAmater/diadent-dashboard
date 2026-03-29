@@ -7,13 +7,17 @@ function sw(tab, btn) {
   if (btn) btn.classList.add('on');
 
   // Hide all views
-  ['vg','vc','vd','vedu','vlab'].forEach(id => {
+  ['vg','vc','vd','vedu','vlab','vdept-sales','vdept-marketing','vdept-hr','vdept-tech','vdept-production'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
 
   // Show target view
-  const map = { group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab' };
+  const map = {
+    group:'vg', clinics:'vc', doctors:'vd', education:'vedu', lab:'vlab',
+    'dept-sales':'vdept-sales', 'dept-marketing':'vdept-marketing',
+    'dept-hr':'vdept-hr', 'dept-tech':'vdept-tech', 'dept-production':'vdept-production'
+  };
   const viewId = map[tab];
   if (viewId) document.getElementById(viewId).classList.remove('hidden');
 
