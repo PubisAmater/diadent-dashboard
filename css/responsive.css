@@ -15,7 +15,7 @@
    1280px — чуть убрать padding снаружи
 ══════════════════════════════════════════ */
 @media (max-width: 1280px) {
-  .app { padding: 20px 24px; }
+  .main-content { padding: 20px 24px; }
   .hero { padding: 22px 24px; }
   .ecard { padding: 20px; }
   .nc { padding: 20px; }
@@ -26,7 +26,8 @@
    1080px — переключаем 3-колонки на 2
 ══════════════════════════════════════════ */
 @media (max-width: 1080px) {
-  .app { padding: 18px 20px; }
+  .sidebar { width: 180px; }
+  .main-content { padding: 18px 20px; }
 
   /* Hero + EBITDA — ужимаем EBITDA */
   .row1 { grid-template-columns: 1fr 260px; gap: 12px; }
@@ -52,7 +53,8 @@
    900px — Hero стакается, грид одноколонный
 ══════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .app { padding: 14px 16px; }
+  .sidebar { width: 160px; }
+  .main-content { padding: 14px 16px; }
 
   /* Hero + EBITDA → вертикаль */
   .row1 { grid-template-columns: 1fr; gap: 12px; }
@@ -100,12 +102,21 @@
   /* Три коэф. → 1 колонка */
   .row3 { grid-template-columns: 1fr; }
 
-  /* Хедер → Logo + дата в одну строку, табы снизу */
-  .hdr { flex-wrap: wrap; gap: 10px; row-gap: 8px; }
-  .logo { order: 1; }
-  .dt { order: 2; margin-left: auto; }
-  .tabs { order: 3; width: 100%; }
-  .tb { flex: 1; text-align: center; padding: 8px 10px; }
+  /* Sidebar → нижняя панель */
+  .app { flex-direction: column; }
+  .sidebar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    width: 100%; height: 56px; min-height: unset;
+    flex-direction: row; align-items: center;
+    padding: 0; border-right: none;
+    border-top: 1px solid #EBEAE6;
+    z-index: 100;
+  }
+  .sb-logo { display: none; }
+  .sb-nav { flex-direction: row; padding: 0; gap: 0; flex: 1; height: 100%; }
+  .sb-item { flex: 1; justify-content: center; height: 100%; border-radius: 0; font-size: 13px; }
+  .sb-date { display: none; }
+  .main-content { padding: 12px; padding-bottom: 70px; }
 
   /* KPI врача → 2×2 */
   .kpi4 { grid-template-columns: repeat(2, 1fr); }
@@ -124,7 +135,7 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  .app { padding: 10px; }
+  .main-content { padding: 10px; padding-bottom: 70px; }
   .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
 
   /* hero-top → вертикаль */

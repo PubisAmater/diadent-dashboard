@@ -3,7 +3,7 @@ let prevTab = 'group';
 let prevTabBtn = null;
 
 function sw(tab, btn) {
-  document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.sb-item').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   ['vg','vc','vd'].forEach(id => document.getElementById(id).classList.add('hidden'));
   const map = { group:'vg', clinics:'vc', doctors:'vd' };
@@ -29,7 +29,7 @@ function toggleSpec(row, drillId) {
 
 function openDoctor(id) {
   const btn = document.getElementById('tab-doctors');
-  prevTabBtn = document.querySelector('.tb.on');
+  prevTabBtn = document.querySelector('.sb-item.on');
   prevTab = prevTabBtn ? prevTabBtn.textContent.trim() : 'group';
 
   sw('doctors', btn);
@@ -42,7 +42,7 @@ function goBack() {
   document.getElementById('back-link').style.display = 'none';
   const map = { 'Группа': 'group', 'Филиалы': 'clinics' };
   const tabKey = map[prevTab] || 'group';
-  const btns = document.querySelectorAll('.tb');
+  const btns = document.querySelectorAll('.sb-item');
   const targetBtn = Array.from(btns).find(b => {
     const t = b.textContent.trim();
     return (tabKey === 'group' && t === 'Группа') || (tabKey === 'clinics' && t === 'Филиалы');
