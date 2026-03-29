@@ -46,7 +46,7 @@
 }
 .dp-row:last-child { border-bottom: none; }
 .dp-head { font-size: 10px; color: #9B9A97; font-weight: 600; padding-bottom: 4px; }
-.dp-row span:not(:first-child) { text-align: right; }
+.dp-row span:not(:first-child) { text-align: right; white-space: nowrap; }
 .dp-cur { font-weight: 700; background: #F7FBFF; border-radius: 5px; padding: 6px 6px; }
 
 .dp-weeks { display: flex; flex-direction: column; gap: 8px; }
@@ -243,8 +243,9 @@
 .prod-val { font-size: 12px; font-weight: 700; width: 52px; text-align: right; flex-shrink: 0; color: #37352F; }
 .prod-sub { font-size: 11px; color: #9B9A97; width: 40px; text-align: right; flex-shrink: 0; }
 
-/* 3-column dp-row variant */
-.dp-row.dp-3 { grid-template-columns: 2fr 1fr 1fr; }
+/* 2-column dp-row variant (name + value) */
+.dp-row.dp-2 { grid-template-columns: 1fr auto; gap: 4px 10px; }
+.dp-row.dp-2 span:not(:first-child) { white-space: nowrap; }
 
 /* Drill link button */
 .card-drill-link {
