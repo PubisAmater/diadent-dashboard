@@ -9,11 +9,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 
 <!-- CSS modules -->
-<link rel="stylesheet" href="css/base.css?v=5">
-<link rel="stylesheet" href="css/group.css?v=5">
-<link rel="stylesheet" href="css/clinics.css?v=5">
-<link rel="stylesheet" href="css/doctors.css?v=5">
-<link rel="stylesheet" href="css/responsive.css?v=5">
+<link rel="stylesheet" href="css/base.css?v=6">
+<link rel="stylesheet" href="css/group.css?v=6">
+<link rel="stylesheet" href="css/clinics.css?v=6">
+<link rel="stylesheet" href="css/doctors.css?v=6">
+<link rel="stylesheet" href="css/responsive.css?v=6">
 </head>
 <body>
 <div class="app">
@@ -55,7 +55,7 @@
       <div class="hero">
         <div class="hero-top">
           <div>
-            <div class="h-label">Выручка · март 2026</div>
+            <div class="h-label">Выручка группы · март 2026</div>
             <div class="h-num">30,8 <span style="font-size:20px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
             <div class="h-sub">факт 1–28 марта · прогноз ~35 млн</div>
           </div>
@@ -72,13 +72,13 @@
         <div class="pbar-lbs">
           <span style="color:#2B5F8E;font-weight:600;">■ Факт 30,8 млн</span>
           <span style="color:#7BA5C8;font-weight:600;">■ Прогноз +4,2 млн</span>
-          <span style="color:#D0CEC9;">Норма мощностей: 63,5 млн</span>
+          <span style="color:#D0CEC9;">план 35,0 млн</span>
         </div>
         <div class="cmp">
           <div class="cmp-c"><div class="cmp-label">Прогноз месяца</div><div class="cmp-val" style="color:#2B5F8E;">~35 <span style="font-size:13px;font-weight:500;color:#9B9A97;">млн ₽</span></div><div class="cmp-hint">к закрытию марта</div></div>
           <div class="cmp-c"><div class="cmp-label">vs Март 2025</div><div class="cmp-val up">+19%</div><div class="cmp-hint">было 25,9 млн</div></div>
           <div class="cmp-c"><div class="cmp-label">vs Февраль 2026</div><div class="cmp-val up">+9%</div><div class="cmp-hint">было 28,2 млн</div></div>
-          <div class="cmp-c"><div class="cmp-label">Норма мощностей</div><div class="cmp-val" style="color:#9B9A97;">63,5 <span style="font-size:13px;font-weight:500;color:#9B9A97;">млн ₽</span></div><div class="cmp-hint">использовано 48%</div></div>
+          <div class="cmp-c"><div class="cmp-label">EBITDA-маржа</div><div class="cmp-val up">~30%</div><div class="cmp-hint">~9,2 млн ₽</div></div>
         </div>
       </div>
       <div class="ecard">
@@ -98,166 +98,63 @@
         <span class="li"><span class="lsq" style="background:#2B5F8E;"></span>Факт</span>
         <span class="li"><span class="lsq" style="background:#B5D2EE;"></span>Прогноз</span>
         <span class="li"><span class="lln" style="background:#C87B1A;"></span>План</span>
-        <span class="li"><span class="lln" style="background:#C8C6BD;"></span>Норма мощностей 63,5 млн</span>
       </div>
       <div style="position:relative;height:190px;"><canvas id="mainChart"></canvas></div>
     </div>
 
-    <div class="row3">
-      <div class="coef">
-        <div class="coef-lbl">Мощность · кресла и кабинеты</div>
-        <div class="coef-num">23 <span class="coef-unit">ед.</span></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:6px;">17 стомат. + 5 многопроф. + 1 операц.</div>
-        <div class="coef-bar" style="margin-top:12px;"><div class="coef-bf" style="width:100%;background:#2B5F8E;"></div></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:4px;">фиксированная · изменяется стратегией</div>
-      </div>
-      <div class="coef">
-        <div class="coef-lbl">Загрузка мощностей</div>
-        <div class="coef-num am">61 <span class="coef-unit">%</span></div>
-        <div class="coef-d am">↑ 4 пп. к февралю</div>
-        <div class="coef-bar"><div class="coef-bf" style="width:61%;background:#B87416;"></div></div>
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:#BBBAB5;margin-top:4px;">
-          <span>0%</span><span style="color:#B87416;font-weight:600;">сейчас 61%</span><span>цель ≥80%</span>
-        </div>
-      </div>
-      <div class="coef">
-        <div class="coef-lbl">Средний чек по группе</div>
-        <div class="coef-num up">7 200 <span class="coef-unit">₽</span></div>
-        <div class="coef-d up">↑ 10% к марту 2025</div>
-        <div class="coef-bar"><div class="coef-bf" style="width:72%;background:#3A8C62;"></div></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:4px;">потенциал роста до ~10 000 ₽</div>
-      </div>
-    </div>
+    <div class="sec-title">Выручка по сегментам · март 2026</div>
+    <div class="seg-list">
 
-    <div class="sec-title">Выручка по направлениям · март 2026</div>
-    <div class="dir-grid">
+      <button class="seg-card" onclick="sw('clinics', document.querySelector('.tb-tab[data-tab=clinics]'))">
+        <div class="seg-icon" style="background:#EBF4FF;color:#2B5F8E;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M9 21V8l3-5 3 5v13M9 13h6"/></svg>
+        </div>
+        <div class="seg-info">
+          <div class="seg-name">Медицинская деятельность</div>
+          <div class="seg-sub">5 клиник · 6 специальностей</div>
+          <div class="seg-bar"><div class="seg-bf" style="width:87%;background:#2B5F8E;"></div></div>
+        </div>
+        <div class="seg-nums">
+          <div class="seg-rev">26,8 <span>млн ₽</span></div>
+          <div class="seg-pct">87% выручки</div>
+          <div class="seg-margin up">маржа ~28%</div>
+        </div>
+        <div class="seg-arrow">›</div>
+      </button>
 
-      <!-- МЕДИЦИНА -->
-      <div class="dc">
-        <div class="dc-name">Медицинская деятельность</div>
-        <div class="dc-sub">5 клиник · нажмите специальность → врача</div>
-        <div class="dc-total">26,8 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:2px;">87% общей выручки</div>
-        <div class="dc-margin up">Маржа ~28%</div>
-        <div class="spec-section-label">По специальностям</div>
+      <button class="seg-card" onclick="sw('education', document.querySelector('.tb-tab[data-tab=education]'))">
+        <div class="seg-icon" style="background:#EAF3DE;color:#3B6D11;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="seg-info">
+          <div class="seg-name">Учебный центр</div>
+          <div class="seg-sub">4 курса · 50+ участников</div>
+          <div class="seg-bar"><div class="seg-bf" style="width:9%;background:#4A8B6E;"></div></div>
+        </div>
+        <div class="seg-nums">
+          <div class="seg-rev">2,8 <span>млн ₽</span></div>
+          <div class="seg-pct">9% выручки</div>
+          <div class="seg-margin up">маржа ~51%</div>
+        </div>
+        <div class="seg-arrow">›</div>
+      </button>
 
-        <div class="spec-row" onclick="toggleSpec(this,'impl')">
-          <span class="spec-icon">›</span><span class="spec-name">Имплантология</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:100%;background:#2B5F8E;"></div></div>
-          <span class="spec-val">8,4 млн</span><span class="spec-pct up">38%</span>
+      <button class="seg-card" onclick="sw('lab', document.querySelector('.tb-tab[data-tab=lab]'))">
+        <div class="seg-icon" style="background:#F4F2EE;color:#6B6B6B;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3h6M8 3v8l-4 9h16l-4-9V3"/><line x1="6" y1="14" x2="18" y2="14"/></svg>
         </div>
-        <div class="drill" id="impl">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('volkov')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#E6F1FB;color:#185FA5;">ВД</div><div class="doc-info"><div class="doc-name">Волков Д.С.</div><div class="doc-clinic">Бухарестская</div></div><span class="doc-val">3,8 млн</span><span class="doc-share">45%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('nilov')"><span class="doc-rank silver">2</span><div class="doc-av" style="background:#EAF3DE;color:#3B6D11;">НА</div><div class="doc-info"><div class="doc-name">Нилов А.Р.</div><div class="doc-clinic">Серпуховская</div></div><span class="doc-val">2,6 млн</span><span class="doc-share">31%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('gorin')"><span class="doc-rank bronze">3</span><div class="doc-av" style="background:#FAECE7;color:#993C1D;">ГС</div><div class="doc-info"><div class="doc-name">Горин С.В.</div><div class="doc-clinic">Энгельса</div></div><span class="doc-val">2,0 млн</span><span class="doc-share">24%</span><span class="doc-arrow">›</span></div>
-          </div>
+        <div class="seg-info">
+          <div class="seg-name">Зуботехническая лаборатория</div>
+          <div class="seg-sub">193 ед. · загрузка 55%</div>
+          <div class="seg-bar"><div class="seg-bf" style="width:4%;background:#9B9A97;"></div></div>
         </div>
-
-        <div class="spec-row" onclick="toggleSpec(this,'ortho')">
-          <span class="spec-icon">›</span><span class="spec-name">Ортодонтия</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:76%;background:#2B5F8E;"></div></div>
-          <span class="spec-val">6,4 млн</span><span class="spec-pct up">35%</span>
+        <div class="seg-nums">
+          <div class="seg-rev">1,2 <span>млн ₽</span></div>
+          <div class="seg-pct">4% выручки</div>
+          <div class="seg-margin" style="color:#888;">маржа ~21%</div>
         </div>
-        <div class="drill" id="ortho">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('karaseva')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#E6F1FB;color:#185FA5;">КМ</div><div class="doc-info"><div class="doc-name">Карасёва М.А.</div><div class="doc-clinic">Серпуховская</div></div><span class="doc-val">4,8 млн</span><span class="doc-share">75%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('lebedeva')"><span class="doc-rank silver">2</span><div class="doc-av" style="background:#EAF3DE;color:#3B6D11;">ЛЕ</div><div class="doc-info"><div class="doc-name">Лебедева Е.А.</div><div class="doc-clinic">Бухарестская</div></div><span class="doc-val">1,0 млн</span><span class="doc-share">16%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('mitina')"><span class="doc-rank bronze">3</span><div class="doc-av" style="background:#F4F2EE;color:#888;">МТ</div><div class="doc-info"><div class="doc-name">Митина Т.В.</div><div class="doc-clinic">Светлановский</div></div><span class="doc-val">0,6 млн</span><span class="doc-share">9%</span><span class="doc-arrow">›</span></div>
-          </div>
-        </div>
-
-        <div class="spec-row" onclick="toggleSpec(this,'surg')">
-          <span class="spec-icon">›</span><span class="spec-name">Хирургия</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:48%;background:#4A8B6E;"></div></div>
-          <span class="spec-val">4,0 млн</span><span class="spec-pct up">31%</span>
-        </div>
-        <div class="drill" id="surg">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('zakharov')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#FAECE7;color:#993C1D;">ЗА</div><div class="doc-info"><div class="doc-name">Захаров А.В.</div><div class="doc-clinic">Бухарестская</div></div><span class="doc-val">2,2 млн</span><span class="doc-share">55%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('morozov')"><span class="doc-rank silver">2</span><div class="doc-av" style="background:#F4F2EE;color:#888;">МО</div><div class="doc-info"><div class="doc-name">Морозов О.К.</div><div class="doc-clinic">Энгельса</div></div><span class="doc-val">1,1 млн</span><span class="doc-share">28%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('kuznetsov')"><span class="doc-rank bronze">3</span><div class="doc-av" style="background:#EAF3DE;color:#3B6D11;">КА</div><div class="doc-info"><div class="doc-name">Кузнецов А.Д.</div><div class="doc-clinic">Серпуховская</div></div><span class="doc-val">0,7 млн</span><span class="doc-share">17%</span><span class="doc-arrow">›</span></div>
-          </div>
-        </div>
-
-        <div class="spec-row" onclick="toggleSpec(this,'proto')">
-          <span class="spec-icon">›</span><span class="spec-name">Протезирование</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:43%;background:#4A8B6E;"></div></div>
-          <span class="spec-val">3,6 млн</span><span class="spec-pct up">29%</span>
-        </div>
-        <div class="drill" id="proto">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('serov')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#E6F1FB;color:#185FA5;">СП</div><div class="doc-info"><div class="doc-name">Серов П.Г.</div><div class="doc-clinic">Бухарестская</div></div><span class="doc-val">2,1 млн</span><span class="doc-share">58%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('kozlov')"><span class="doc-rank silver">2</span><div class="doc-av" style="background:#EAF3DE;color:#3B6D11;">КВ</div><div class="doc-info"><div class="doc-name">Козлов В.Н.</div><div class="doc-clinic">Серпуховская</div></div><span class="doc-val">1,1 млн</span><span class="doc-share">31%</span><span class="doc-arrow">›</span></div>
-          </div>
-        </div>
-
-        <div class="spec-row" onclick="toggleSpec(this,'therapy')">
-          <span class="spec-icon">›</span><span class="spec-name">Терапия</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:33%;background:#7BA7BF;"></div></div>
-          <span class="spec-val">2,8 млн</span><span class="spec-pct am">21%</span>
-        </div>
-        <div class="drill" id="therapy">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('petrova')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#FAECE7;color:#993C1D;">ПИ</div><div class="doc-info"><div class="doc-name">Петрова И.Н.</div><div class="doc-clinic">Серпуховская</div></div><span class="doc-val">1,4 млн</span><span class="doc-share">50%</span><span class="doc-arrow">›</span></div>
-            <div class="doc-row" onclick="openDoctor('fedorova')"><span class="doc-rank silver">2</span><div class="doc-av" style="background:#F4F2EE;color:#888;">ФА</div><div class="doc-info"><div class="doc-name">Фёдорова А.С.</div><div class="doc-clinic">Светлановский</div></div><span class="doc-val">0,9 млн</span><span class="doc-share">32%</span><span class="doc-arrow">›</span></div>
-          </div>
-        </div>
-
-        <div class="spec-row" onclick="toggleSpec(this,'paro')">
-          <span class="spec-icon">›</span><span class="spec-name">Пародонтология</span>
-          <div class="spec-bar"><div class="spec-fill" style="width:18%;background:#C8C6BD;"></div></div>
-          <span class="spec-val">1,5 млн</span><span class="spec-pct am">19%</span>
-        </div>
-        <div class="drill" id="paro">
-          <div class="drill-inner">
-            <div class="drill-label">Врачи · нажмите для перехода в карточку</div>
-            <div class="doc-row" onclick="openDoctor('nilova')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#EAF3DE;color:#3B6D11;">НО</div><div class="doc-info"><div class="doc-name">Нилова О.Р.</div><div class="doc-clinic">Бухарестская</div></div><span class="doc-val">1,0 млн</span><span class="doc-share">67%</span><span class="doc-arrow">›</span></div>
-          </div>
-        </div>
-
-      </div><!-- /медицина -->
-
-      <!-- УЧЕБНЫЙ ЦЕНТР -->
-      <div class="dc">
-        <div class="dc-name">Учебный центр</div>
-        <div class="dc-sub">Курсы для стоматологов и техников</div>
-        <div class="dc-total">2,8 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:2px;">9% общей выручки</div>
-        <div class="dc-margin up">Маржа ~51%</div>
-        <div class="spec-section-label">По курсам</div>
-        <div class="spec-row" onclick="toggleSpec(this,'uc-impl')"><span class="spec-icon">›</span><span class="spec-name">Имплантология (3 дня)</span><div class="spec-bar"><div class="spec-fill" style="width:100%;background:#2B5F8E;"></div></div><span class="spec-val">0,96 млн</span><span class="spec-pct" style="color:#BBBAB5;">9 уч.</span></div>
-        <div class="drill" id="uc-impl"><div class="drill-inner"><div class="drill-label">Преподаватель</div><div class="doc-row" onclick="openDoctor('volkov')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#E6F1FB;color:#185FA5;">ВД</div><div class="doc-info"><div class="doc-name">Волков Д.С.</div><div class="doc-clinic">Ведущий · 9 участников</div></div><span class="doc-val">0,96 млн</span><span class="doc-share">100%</span><span class="doc-arrow">›</span></div></div></div>
-        <div class="spec-row" onclick="toggleSpec(this,'uc-ortho')"><span class="spec-icon">›</span><span class="spec-name">Ортодонтия базовый</span><div class="spec-bar"><div class="spec-fill" style="width:73%;background:#4A8B6E;"></div></div><span class="spec-val">0,70 млн</span><span class="spec-pct" style="color:#BBBAB5;">14 уч.</span></div>
-        <div class="drill" id="uc-ortho"><div class="drill-inner"><div class="drill-label">Преподаватель</div><div class="doc-row" onclick="openDoctor('karaseva')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#E6F1FB;color:#185FA5;">КМ</div><div class="doc-info"><div class="doc-name">Карасёва М.А.</div><div class="doc-clinic">Ведущий · 14 участников</div></div><span class="doc-val">0,70 млн</span><span class="doc-share">100%</span><span class="doc-arrow">›</span></div></div></div>
-        <div class="spec-row" onclick="toggleSpec(this,'uc-surg')"><span class="spec-icon">›</span><span class="spec-name">Хирургия продвинутый</span><div class="spec-bar"><div class="spec-fill" style="width:55%;background:#4A8B6E;"></div></div><span class="spec-val">0,53 млн</span><span class="spec-pct" style="color:#BBBAB5;">6 уч.</span></div>
-        <div class="drill" id="uc-surg"><div class="drill-inner"><div class="drill-label">Преподаватель</div><div class="doc-row" onclick="openDoctor('zakharov')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#FAECE7;color:#993C1D;">ЗА</div><div class="doc-info"><div class="doc-name">Захаров А.В.</div><div class="doc-clinic">Ведущий · 6 участников</div></div><span class="doc-val">0,53 млн</span><span class="doc-share">100%</span><span class="doc-arrow">›</span></div></div></div>
-        <div class="spec-row" onclick="toggleSpec(this,'uc-therapy')"><span class="spec-icon">›</span><span class="spec-name">Терапия (повторяющийся ♻)</span><div class="spec-bar"><div class="spec-fill" style="width:40%;background:#7BA7BF;"></div></div><span class="spec-val">0,38 млн</span><span class="spec-pct" style="color:#BBBAB5;">22 уч.</span></div>
-        <div class="drill" id="uc-therapy"><div class="drill-inner"><div class="drill-label">Преподаватель</div><div class="doc-row" onclick="openDoctor('petrova')"><span class="doc-rank gold">1</span><div class="doc-av" style="background:#FAECE7;color:#993C1D;">ПИ</div><div class="doc-info"><div class="doc-name">Петрова И.Н.</div><div class="doc-clinic">Ежемесячно · 22 уч.</div></div><span class="doc-val">0,38 млн</span><span class="doc-share">100%</span><span class="doc-arrow">›</span></div></div></div>
-      </div>
-
-      <!-- ЛАБОРАТОРИЯ -->
-      <div class="dc">
-        <div class="dc-name">Зуботехн. лаборатория</div>
-        <div class="dc-sub">Производство конструкций</div>
-        <div class="dc-total">1,2 <span style="font-size:14px;font-weight:400;color:#BBBAB5;">млн ₽</span></div>
-        <div style="font-size:10px;color:#BBBAB5;margin-top:2px;">4% общей выручки</div>
-        <div class="dc-margin" style="color:#888;">Маржа ~21%</div>
-        <div class="spec-section-label">По типам конструкций · ед. / выручка</div>
-        <div class="prod-row"><span class="prod-name">Металлокерамич. коронки</span><div class="prod-bar"><div class="prod-fill" style="width:100%;background:#2B5F8E;"></div></div><span class="prod-val">0,39 млн</span><span class="prod-sub">78 ед.</span></div>
-        <div class="prod-row"><span class="prod-name">Циркониевые коронки</span><div class="prod-bar"><div class="prod-fill" style="width:79%;background:#4A8B6E;"></div></div><span class="prod-val">0,31 млн</span><span class="prod-sub">31 ед.</span></div>
-        <div class="prod-row"><span class="prod-name">Съёмные протезы</span><div class="prod-bar"><div class="prod-fill" style="width:54%;background:#7BA7BF;"></div></div><span class="prod-val">0,21 млн</span><span class="prod-sub">42 ед.</span></div>
-        <div class="prod-row"><span class="prod-name">Ортодонт. конструкции</span><div class="prod-bar"><div class="prod-fill" style="width:41%;background:#7BA7BF;"></div></div><span class="prod-val">0,16 млн</span><span class="prod-sub">24 ед.</span></div>
-        <div class="prod-row"><span class="prod-name">Вкладки / виниры</span><div class="prod-bar"><div class="prod-fill" style="width:33%;background:#C8C6BD;"></div></div><span class="prod-val">0,13 млн</span><span class="prod-sub">18 ед.</span></div>
-        <div class="div"></div>
-        <div class="stat2"><div class="si"><div class="sil">Всего единиц</div><div class="siv">193</div></div><div class="si"><div class="sil">Ср. цена ед.</div><div class="siv">6 217 ₽</div></div><div class="si"><div class="sil">Ёмкость (макс.)</div><div class="siv">~350 ед.</div></div><div class="si"><div class="sil">Загрузка</div><div class="siv am">55%</div></div></div>
-        <div style="background:#FFF9ED;border:1px solid #F5D98A;border-radius:7px;padding:8px 10px;margin-top:10px;"><div style="font-size:9px;color:#7A5A00;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Потенциал</div><div style="font-size:11px;color:#7A5A00;">При 100% загрузке → ~2,2 млн/мес (+83%)</div></div>
-      </div>
+        <div class="seg-arrow">›</div>
+      </button>
 
     </div>
   </div><!-- /group -->

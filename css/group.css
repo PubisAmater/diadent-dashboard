@@ -3,7 +3,33 @@
 /* Layout */
 .row1 { display: grid; grid-template-columns: 1fr 320px; gap: 16px; margin-bottom: 16px; }
 .row2 { margin-bottom: 16px; }
-.row3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 28px; }
+
+/* Segment summary list */
+.seg-list { display: flex; flex-direction: column; gap: 10px; }
+.seg-card {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border: none; border-radius: 12px;
+  padding: 16px 20px; cursor: pointer; text-align: left; width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  transition: box-shadow .15s, transform .1s;
+}
+.seg-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05); transform: translateY(-1px); }
+.seg-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.seg-icon svg { width: 20px; height: 20px; }
+.seg-info { flex: 1; min-width: 0; }
+.seg-name { font-size: 14px; font-weight: 600; color: #37352F; margin-bottom: 2px; }
+.seg-sub { font-size: 11px; color: #9B9A97; margin-bottom: 8px; }
+.seg-bar { height: 4px; background: #F0EFEB; border-radius: 2px; }
+.seg-bf { height: 100%; border-radius: 2px; }
+.seg-nums { text-align: right; flex-shrink: 0; }
+.seg-rev { font-size: 22px; font-weight: 800; line-height: 1; letter-spacing: -.02em; color: #37352F; }
+.seg-rev span { font-size: 12px; font-weight: 400; color: #9B9A97; }
+.seg-pct { font-size: 11px; color: #9B9A97; margin-top: 3px; }
+.seg-margin { font-size: 11px; font-weight: 600; margin-top: 2px; }
+.seg-arrow { font-size: 20px; color: #BBBAB5; margin-left: 8px; flex-shrink: 0; }
 
 /* Hero card */
 .hero {
