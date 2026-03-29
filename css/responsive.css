@@ -57,12 +57,6 @@
   /* Hero + EBITDA → вертикаль */
   .row1 { grid-template-columns: 1fr; gap: 12px; }
 
-  /* cmp → обратно 4 в ряд (места теперь больше, т.к. нет EBITDA рядом) */
-  .cmp { grid-template-columns: repeat(4, 1fr); gap: 0; }
-  .cmp-c { border-right: 1px solid #F0EFEB !important; padding: 0 16px !important; }
-  .cmp-c:first-child { padding-left: 0 !important; }
-  .cmp-c:last-child { border-right: none !important; padding-right: 0 !important; }
-
   /* Три коэф. → 3 в ряд снова (есть место) */
   .row3 { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
