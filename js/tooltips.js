@@ -46,6 +46,40 @@ function injectTooltips() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', injectTooltips);
+// ── Auto-position: keep box inside viewport on hover ──
+function _fixPosition(tip) {
+  const box = tip.querySelector('.tip-box');
+  if (!box) return;
+
+  const BOX_W = 240; // matches CSS width
+  const PAD = 10;    // min gap from viewport edge
+  const vw = window.innerWidth;
+
+  // Use icon position (always visible) to calculate where box would land
+  const iconRect = tip.getBoundingClientRect();
+  const iconCenter = iconRect.left + iconRect.width / 2;
+
+  // Default: centred above icon
+  let boxLeft = iconCenter - BOX_W / 2;
+
+  // Clamp to viewport
+  if (boxLeft < PAD) boxLeft = PAD;
+  else if (boxLeft + BOX_W > vw - PAD) boxLeft = vw - PAD - BOX_W;
+
+  // Convert to offset relative to the tip's own centre (CSS left:50% anchor)
+  const offset = boxLeft - iconCenter;
+
+  box.style.left = 'calc(50% + ' + Math.round(offset) + 'px)';
+  box.style.transform = 'none';
+}
+
+function _bindPositioning() {
+  document.addEventListener('mouseover', function(e) {
+    const tip = e.target.closest('.tip');
+    if (tip) _fixPosition(tip);
+  }, true);
+}
+
+document.addEventListener('DOMContentLoaded', () => { injectTooltips(); _bindPositioning(); });
 // Re-run when doctor view renders dynamically
 document.addEventListener('doctorRendered', injectTooltips);
