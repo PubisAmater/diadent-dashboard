@@ -49,7 +49,8 @@ body {
   flex-shrink: 0;
 }
 .lm-badge img { display: block; }
-.ls { font-size: 11px; color: #9B9A97; white-space: nowrap; }
+.ls-title { font-size: 13px; font-weight: 600; color: #37352F; white-space: nowrap; }
+.ls { font-size: 11px; color: #9B9A97; white-space: nowrap; margin-top: 2px; }
 
 .tabs {
   display: flex; gap: 2px;
