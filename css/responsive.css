@@ -161,56 +161,100 @@
 
 
 /* ══════════════════════════════════════════
-   480px — мобильный
+   480px — мобильный (как нативное приложение)
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  /* Сайдбар: узкий иконочный, раскрывается по нажатию */
-  .sidebar { width: 44px; }
-  .sidebar .sb-label { opacity: 0; width: 0; pointer-events: none; }
-  .sidebar .sb-item { justify-content: center; padding: 8px 0; }
-  .sb-section-label { opacity: 0; height: 0; overflow: hidden; padding: 0; }
-  .sidebar.mobile-open {
-    width: 200px; position: fixed; top: 52px; left: 0;
-    height: calc(100vh - 52px); z-index: 100;
-    box-shadow: 4px 0 24px rgba(0,0,0,.15);
-  }
-  .sidebar.mobile-open .sb-label { opacity: 1; width: auto; pointer-events: auto; }
-  .sidebar.mobile-open .sb-section-label { opacity: 1; height: auto; padding: 10px 10px 4px; overflow: visible; }
-  .sidebar.mobile-open .sb-item { justify-content: flex-start; padding: 8px 10px; }
-  .main-content { padding: 8px; padding-bottom: 16px; }
-  .ecard { padding: 12px; }
-  .hero { padding: 14px; }
-  .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 8px; }
 
-  /* Топбар: компактный */
-  .topbar { padding: 0 4px; overflow: hidden; }
+  /* === Сайдбар → нижний tab bar === */
+  .body-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 56px; /* место для нижнего бара */
+  }
+  .sidebar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    top: auto;
+    width: 100% !important;
+    height: 56px;
+    flex-direction: row;
+    border-top: 1px solid #EBEAE6;
+    border-right: none;
+    background: #fff;
+    z-index: 100;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sidebar .sb-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    gap: 0;
+    padding: 0 4px;
+    width: 100%;
+  }
+  .sidebar .sb-toggle { display: none; }
+  .sb-section-label { display: none !important; }
+  .sidebar .sb-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    min-width: 56px;
+    flex-shrink: 0;
+    gap: 2px;
+  }
+  .sidebar .sb-icon { width: 20px; height: 20px; }
+  .sidebar .sb-label {
+    opacity: 1 !important;
+    width: auto !important;
+    pointer-events: auto !important;
+    font-size: 9px !important;
+    white-space: nowrap;
+  }
+
+  /* === Топбар === */
+  .topbar { padding: 0 4px; height: 46px; }
   .tb-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .tb-tabs::-webkit-scrollbar { display: none; }
-  .tb-tab { padding: 0 8px; font-size: 11px; flex-shrink: 0; }
+  .tb-tab { padding: 0 10px; font-size: 12px; flex-shrink: 0; }
   .tb-nav-btns { display: none; }
   .tb-logo { margin-right: 6px; }
   .lm-badge { padding: 4px 8px; }
   .lm-badge img { height: 18px; }
 
-  /* Hero: компактнее */
-  .hero-top { flex-direction: column; gap: 12px; }
-  .h-num { font-size: 32px !important; }
+  /* === Контент === */
+  .main-content { padding: 10px 10px 16px; }
+  .ecard { padding: 14px; border-radius: 10px; }
+  .hero { padding: 16px; border-radius: 10px; }
+  .card { padding: 14px 16px; border-radius: 10px; }
+  .nc { padding: 14px; border-radius: 10px; }
+  .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
 
-  /* Формула клиник */
-  .formula { gap: 4px; }
-  .fc { min-width: 60px; padding: 6px; }
+  /* === Hero: адаптивный === */
+  .hero-top { flex-direction: column; gap: 10px; }
+  .hero-top > div:last-child { text-align: left !important; }
+
+  /* === Клиники === */
+  .nc-head { flex-direction: column; gap: 6px; }
+  .nc-pn { text-align: left !important; font-size: 24px !important; }
+  .formula { flex-wrap: wrap; gap: 6px; }
+  .fc { min-width: 70px; padding: 8px; }
   .fop { font-size: 14px; padding: 0 2px; }
+  .mg { grid-template-columns: 1fr 1fr; gap: 8px; }
 
-  /* nc-head → вертикаль */
-  .nc-head { flex-direction: column; gap: 8px; }
-  .nc-pn { text-align: left !important; }
+  /* === Метрики/CMP === */
+  .cmp { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cmp-c { border-right: none !important; padding: 0 !important; }
 
-  /* cmp на совсем узком */
-  .cmp { grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* === Таблицы === */
+  .dp-row { font-size: 12px; }
 
-  /* Доктор top → вертикаль */
+  /* === Доктора === */
   .doc-top { flex-direction: column; align-items: flex-start; gap: 12px; }
-
-  /* share-card → убрать лишнее */
+  .kpi4 { grid-template-columns: 1fr 1fr; }
   .share-top { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
