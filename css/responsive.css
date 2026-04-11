@@ -178,18 +178,21 @@
     top: auto !important;
     width: 100% !important;
     height: 56px !important;
-    min-height: 56px;
-    max-height: 56px;
+    min-height: 56px !important;
+    max-height: 56px !important;
     display: flex !important;
     flex-direction: row !important;
+    flex-shrink: 0 !important;
     border-top: 1px solid #EBEAE6;
     border-right: none !important;
-    background: #fff;
+    background: #fff !important;
     z-index: 200;
     padding: 0 !important;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
+    /* Override base sticky */
+    inset: auto 0 0 0 !important;
   }
   .sidebar .sb-nav {
     display: flex !important;
