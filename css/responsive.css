@@ -117,11 +117,13 @@
   /* Три коэф. → 1 колонка */
   .row3 { grid-template-columns: 1fr; }
 
-  /* Топбар: табы */
-  .topbar { padding: 0 10px; gap: 0; }
-  .tb-tab { padding: 0 12px; font-size: 12px; }
+  /* Топбар: табы скроллятся */
+  .topbar { padding: 0 8px; gap: 0; overflow: hidden; }
+  .tb-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tb-tabs::-webkit-scrollbar { display: none; }
+  .tb-tab { padding: 0 10px; font-size: 12px; flex-shrink: 0; }
   .tb-date { display: none; }
-  .tb-logo { margin-right: 10px; }
+  .tb-logo { margin-right: 8px; }
 
   /* ── Сайдбар: иконки только, раскрывается оверлеем ── */
   .sidebar { width: 48px; }
@@ -176,10 +178,14 @@
   .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 8px; }
 
   /* Топбар: компактный */
-  .topbar { padding: 0 6px; }
-  .tb-tab { padding: 0 8px; font-size: 11px; }
+  .topbar { padding: 0 4px; overflow: hidden; }
+  .tb-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tb-tabs::-webkit-scrollbar { display: none; }
+  .tb-tab { padding: 0 8px; font-size: 11px; flex-shrink: 0; }
   .tb-nav-btns { display: none; }
-  .lm-badge { width: 28px; height: 28px; }
+  .tb-logo { margin-right: 6px; }
+  .lm-badge { padding: 4px 8px; }
+  .lm-badge img { height: 18px; }
 
   /* Hero: компактнее */
   .hero-top { flex-direction: column; gap: 12px; }
