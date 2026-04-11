@@ -4,6 +4,10 @@
    Breakpoints: 1280 → 1200 → 900 → 680 → 480
 */
 
+/* ── Tab label toggle (default: show full, hide short) ── */
+.tb-short { display: none; }
+.tb-full { display: inline; }
+
 /* ── Detail grid classes ── */
 .detail-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .detail-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
@@ -198,11 +202,12 @@
     display: flex !important;
     flex-direction: row !important;
     align-items: center;
+    justify-content: space-around;
     height: 100%;
     gap: 0;
-    padding: 0 4px;
+    padding: 0;
     width: 100%;
-    overflow-x: auto;
+    overflow: hidden !important;
   }
   .sidebar .sb-toggle { display: none !important; }
   .sb-section-label { display: none !important; }
@@ -210,33 +215,41 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 4px 6px !important;
-    min-width: 52px;
-    flex-shrink: 0;
+    padding: 4px 2px !important;
+    flex: 1;
+    min-width: 0;
+    max-width: 72px;
     gap: 2px;
     border-radius: 0 !important;
   }
-  .sidebar .sb-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  /* Показать все sb-item, равномерно распределить */
+  .sidebar .sb-icon { width: 22px; height: 22px; flex-shrink: 0; }
   .sidebar .sb-label {
     opacity: 1 !important;
     width: auto !important;
     pointer-events: auto !important;
-    font-size: 9px !important;
+    font-size: 10px !important;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 64px;
     color: #9B9A97;
   }
   .sidebar .sb-item.on .sb-label,
   .sidebar .sb-item:active .sb-label { color: #2B5F8E; }
+  .sidebar .sb-item.on .sb-icon,
+  .sidebar .sb-item:active .sb-icon { stroke: #2B5F8E; }
 
-  /* === Топбар === */
-  .topbar { padding: 0 4px; height: 46px; }
-  .tb-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .tb-tabs::-webkit-scrollbar { display: none; }
-  .tb-tab { padding: 0 10px; font-size: 12px; flex-shrink: 0; }
+  /* === Топбар: короткие названия, всё в одну строку === */
+  .topbar { padding: 0 4px; height: 44px; }
+  .tb-tabs { display: flex; flex-wrap: nowrap; overflow: hidden; }
+  .tb-full { display: none !important; }
+  .tb-short { display: inline !important; }
+  .tb-tab { padding: 0 10px; font-size: 12px; flex: 1; text-align: center; min-width: 0; }
   .tb-nav-btns { display: none; }
-  .tb-logo { margin-right: 6px; }
-  .lm-badge { padding: 4px 8px; }
-  .lm-badge img { height: 18px; }
+  .tb-logo { margin-right: 4px; }
+  .lm-badge { padding: 3px 6px; }
+  .lm-badge img { height: 16px; }
 
   /* === Контент === */
   .main-content { padding: 10px 10px 16px; }
