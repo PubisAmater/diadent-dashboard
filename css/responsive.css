@@ -82,6 +82,9 @@
 
 /* ══════════════════════════════════════════
    680px — таблет/большой телефон
+   Detail-секции: 2-кол. гриды → 1 колонка
+   3-кол. карточки → 1 колонка
+   4-кол. таблицы → 2 колонки
    ВАЖНО: .app НЕ получает padding — топбар
    должен быть edge-to-edge для sticky
 ══════════════════════════════════════════ */
@@ -90,6 +93,33 @@
   .nc { padding: 16px; }
   .coef { padding: 18px; }
   .dc { padding: 16px 18px; }
+
+  /* Detail sections: force 1-column on inline grids */
+  #vrev > div[style*="grid-template-columns:1fr 1fr"],
+  #vrev > div[style*="grid-template-columns: 1fr 1fr"],
+  #vebitda > div[style*="grid-template-columns:1fr 1fr"],
+  #vebitda > div[style*="grid-template-columns: 1fr 1fr"],
+  #vexpenses > div[style*="grid-template-columns:1fr 1fr"],
+  #vexpenses > div[style*="grid-template-columns: 1fr 1fr"],
+  #vnetprofit > div[style*="grid-template-columns:1fr 1fr"],
+  #vnetprofit > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 3-col card grids → 1 col */
+  #vrev > div[style*="repeat(3"],
+  #vnetprofit > div[style*="repeat(3"],
+  #vebitda > div[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 4-col table rows → keep but smaller font */
+  .dp-row[style*="2fr 1fr 1fr 1fr"] {
+    grid-template-columns: 2fr 1fr 1fr !important;
+  }
+  .dp-row[style*="2fr 1fr 1fr 1fr"] span:last-child {
+    display: none;
+  }
 
   /* cmp → 2×2 */
   .cmp { grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -143,14 +173,33 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  /* Сайдбар — 44px иконки, раскрывается в оверлей */
-  .sidebar { width: 44px; }
-  .sidebar.mobile-open { width: 200px; }
+  /* Сайдбар: скрываем полностью, оставляем только toggle */
+  .sidebar { width: 0; overflow: hidden; padding: 0; }
+  .sidebar .sb-toggle { display: none; }
+  .sidebar.mobile-open { width: 200px; overflow: visible; padding-top: 8px; }
+  .sidebar.mobile-open .sb-toggle { display: flex; }
 
-  .main-content { padding: 10px; padding-bottom: 16px; }
-  .ecard { padding: 14px; }
-  .hero { padding: 16px; }
-  .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 10px; }
+  /* Контент на всю ширину */
+  .body-wrap { grid-template-columns: 1fr !important; }
+  .main-content { padding: 8px; padding-bottom: 16px; }
+  .ecard { padding: 12px; }
+  .hero { padding: 14px; }
+  .row1, .row3, .dir-grid, .cl-top, .cl-bot { gap: 8px; }
+
+  /* Топбар: компактный */
+  .topbar { padding: 0 6px; }
+  .tb-tab { padding: 0 8px; font-size: 11px; }
+  .tb-nav-btns { display: none; }
+  .lm-badge { width: 28px; height: 28px; }
+
+  /* Hero: компактнее */
+  .hero-top { flex-direction: column; gap: 12px; }
+  .h-num { font-size: 32px !important; }
+
+  /* Формула клиник */
+  .formula { gap: 4px; }
+  .fc { min-width: 60px; padding: 6px; }
+  .fop { font-size: 14px; padding: 0 2px; }
 
   /* nc-head → вертикаль */
   .nc-head { flex-direction: column; gap: 8px; }
