@@ -164,14 +164,19 @@
    480px — мобильный
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  /* Сайдбар: скрываем полностью, оставляем только toggle */
-  .sidebar { width: 0; overflow: hidden; padding: 0; }
-  .sidebar .sb-toggle { display: none; }
-  .sidebar.mobile-open { width: 200px; overflow: visible; padding-top: 8px; }
-  .sidebar.mobile-open .sb-toggle { display: flex; }
-
-  /* Контент на всю ширину */
-  .body-wrap { grid-template-columns: 1fr !important; }
+  /* Сайдбар: узкий иконочный, раскрывается по нажатию */
+  .sidebar { width: 44px; }
+  .sidebar .sb-label { opacity: 0; width: 0; pointer-events: none; }
+  .sidebar .sb-item { justify-content: center; padding: 8px 0; }
+  .sb-section-label { opacity: 0; height: 0; overflow: hidden; padding: 0; }
+  .sidebar.mobile-open {
+    width: 200px; position: fixed; top: 52px; left: 0;
+    height: calc(100vh - 52px); z-index: 100;
+    box-shadow: 4px 0 24px rgba(0,0,0,.15);
+  }
+  .sidebar.mobile-open .sb-label { opacity: 1; width: auto; pointer-events: auto; }
+  .sidebar.mobile-open .sb-section-label { opacity: 1; height: auto; padding: 10px 10px 4px; overflow: visible; }
+  .sidebar.mobile-open .sb-item { justify-content: flex-start; padding: 8px 10px; }
   .main-content { padding: 8px; padding-bottom: 16px; }
   .ecard { padding: 12px; }
   .hero { padding: 14px; }
