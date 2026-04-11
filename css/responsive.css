@@ -4,6 +4,10 @@
    Breakpoints: 1280 → 1200 → 900 → 680 → 480
 */
 
+/* ── Detail grid classes ── */
+.detail-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.detail-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+
 /* ── Общие правила: min-width: 0 чтобы грид не переполнялся ── */
 .row1 > *, .row3 > *, .dir-grid > *, .cl-top > *, .cl-bot > *,
 .doc-view > *, .kpi4 > *, .mg > *, .stat2 > *, .cmp > * {
@@ -94,26 +98,11 @@
   .coef { padding: 18px; }
   .dc { padding: 16px 18px; }
 
-  /* Detail sections: force 1-column on inline grids */
-  #vrev > div[style*="grid-template-columns:1fr 1fr"],
-  #vrev > div[style*="grid-template-columns: 1fr 1fr"],
-  #vebitda > div[style*="grid-template-columns:1fr 1fr"],
-  #vebitda > div[style*="grid-template-columns: 1fr 1fr"],
-  #vexpenses > div[style*="grid-template-columns:1fr 1fr"],
-  #vexpenses > div[style*="grid-template-columns: 1fr 1fr"],
-  #vnetprofit > div[style*="grid-template-columns:1fr 1fr"],
-  #vnetprofit > div[style*="grid-template-columns: 1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
+  /* Detail grids → 1 column */
+  .detail-grid-2 { grid-template-columns: 1fr !important; }
+  .detail-grid-3 { grid-template-columns: 1fr !important; }
 
-  /* 3-col card grids → 1 col */
-  #vrev > div[style*="repeat(3"],
-  #vnetprofit > div[style*="repeat(3"],
-  #vebitda > div[style*="repeat(3"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* 4-col table rows → keep but smaller font */
+  /* 4-col table rows → 3 col, hide last */
   .dp-row[style*="2fr 1fr 1fr 1fr"] {
     grid-template-columns: 2fr 1fr 1fr !important;
   }
